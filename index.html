@@ -2,211 +2,172 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--     <meta name="description" content="Sanjana Bhat's portfolio showcasing skills, projects, and contact details"> -->
-    <meta name="author" content="Sanjana Bhat"> 
-    <title>Sanjana Bhat | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjana Bhat | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Basic reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* Navbar styles */
+    nav {
+      position: sticky;
+      top: 0;
+      background: #0070d2; /* Salesforce blue */
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffbf00; /* highlight color */
+    }
+
+    /* Section styles */
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    section h2 {
+      margin-bottom: 1rem;
+      color: #0070d2;
+      border-bottom: 2px solid #0070d2;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Footer styles */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #0070d2;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      section {
+        margin: 1.5rem 1rem;
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
- <header>
-        <h1>Hello, I'm Sanjana Bhat👋</h1>
-        <p>I am passionate about technology and problem-solving.</p>
-    </header>
-    <main>
-       <!-- About Me Section -->
-       <section id="AboutMe" class="section">
-            <h2>About Me</h2>
-            
-           <p>I'm a 6th semester Computer Science Engineering student at KLE Technological University, with a CGPA of 9.20. I’m passionate about using technology to solve real-world problems and create meaningful user experiences.</p>
-           <p>I am passionate about technology and problem-solving.  Beyond technical skills, I’m deeply curious about how tech impacts businesses and society. I’ve explored several business case studies and continuously strive to build software that aligns with user needs and market trends.</p> 
-           <p>I’m always eager to learn, collaborate, and take on new challenges. Let’s connect and build something impactful together!</p>
-       </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section">
-            <h2>Skills</h2>
-            <h3>Technical Skills</h3>
-            <ul>
-                <li><strong>Languages:</strong> C, C++, Java, Python, SQL</li>
-                <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript, Node.js, React.js, Express.js</li>
-                <li><strong>Databases:</strong> MySQL, MongoDB</li>
-            </ul>
-            <h3>Soft Skills</h3>
-            <ul>
-                <li>Communication</li>
-                <li>Teamwork</li>
-                <li>Problem Solving</li>
-            </ul>
-        </section>
-           
-        <!-- Salesforce Introduction Section -->
-<section id="salesforce-intro" class="section">
-    <h2>Domain Chosen : Salesforce</h2>
-    
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about-me">About Me</a>
+    <a href="#salesforce-domain">Domain: Salesforce</a>
+    <a href="#business-cases">Business Cases</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome to My Portfolio</h2>
+    <p>Hello, I'm Sanjana Bhat👋</p>
+    <p>I am passionate about technology and problem-solving.</p>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about-me">
+    <h2>About Me</h2>
+    <p>I'm a 6th semester Computer Science Engineering student at KLE Technological University, with a CGPA of 9.20. I’m passionate about using technology to solve real-world problems and create meaningful user experiences.</p>
+    <p>I am passionate about technology and problem-solving. Beyond technical skills, I’m deeply curious about how tech impacts businesses and society. I’ve explored several business case studies and continuously strive to build software that aligns with user needs and market trends.</p>
+    <p>I’m always eager to learn, collaborate, and take on new challenges. Let’s connect and build something impactful together!</p>
+  </section>
+
+  <!-- Salesforce Domain Section -->
+  <section id="salesforce-domain">
+    <h2>Domain Chosen: Salesforce</h2>
     <p>Salesforce Inc. is a multinational cloud-based software company that provides customer relationship management (CRM) services and a suite of enterprise applications focused on customer service, marketing automation, analytics, and application development.</p>
     <p>Headquartered in San Francisco, California, Salesforce is known for pioneering cloud computing and revolutionizing how companies interact with their customers. The company has consistently ranked among the top Fortune Global 500 companies and drives innovation in CRM through AI, automation, and data-driven solutions.</p>
     <p>This portfolio explores various innovative business cases that showcase how the company matches technology to stay ahead in the global market.</p>
-</section>
-        
-        <!-- Business Cases Section -->
-        <section id="business-cases" class="section">
-            <h2>Business Cases</h2>
-            <div class="use-case">
-                <h3>Inventory Management System</h3>
-                <p>Uses data structures to track and forecast inventory in real-time to reduce stockouts and automate restocking. AVL trees provide a reliable and scalable structure for managing large inventories in real-time.</p>
-                <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+  </section>
 
-                <p><b>Challenges: </b>Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.
+  <!-- Business Cases Section -->
+  <section id="business-cases">
+    <h2>Business Cases</h2>
 
-</p>
-                <p><b>Market Benefits: </b>Faster Access, supports automated inventory alerts</p>
-                <h3>Algorithm, Design Technniques, Performance Annalysis:</h3>
-                <ul>
-                    <li><strong>Data Structure used: </strong>AVL Tree-a self-balancing Binary Search Tree.Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
-                    <li><strong>Design Approach: </strong>Divide-and-conquer, recursive tree manipulation.</li>
-                    <li><strong>Traversal for Reports: </strong>In-order traversal for sorted inventory listing.</li>
-                     <li><strong>Performance Focus: </strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-                    <li><strong>Time Complexity: </strong>
-                        <ul>
-                            <li>Search: O(log n)</li>
-                            <li>Insertion: O(log n)</li>
-                            <li>Deletion:  O(log n)</li>
-                            <li>Traversal: O(n)</li>
-                        </ul></li>
-                    <li><strong>Space Complexity: </strong>O(n) where n is thenumber of inventory items.</li>
-                </ul>
-                
-<!--                 <a href="Codes/AVL.c" target="_blank">AVL Tree code</a> -->
-            <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
-            </div>
-            
-             <div class="use-case">
-  <h3>Clustering Products into Categories using Targan's Algorithm</h3>
-  <p>Tarjan's Algorithm can be adapted to identify groups of products that are strongly connected by some criterion, such as co-purchase patterns, shared attributes, or customer interactions.</p>
-  <img src="Images/Tarjan's_Algorithm_Animation.gif" alt="Targan's algorithm" width="400"/>
+    <article>
+      <h3>Inventory Management System</h3>
+      <p>Uses data structures to track and forecast inventory in real-time to reduce stockouts and automate restocking. AVL trees provide a reliable and scalable structure for managing large inventories in real-time.</p>
+      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
+      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
+        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+    </article>
 
-  <h4>Challenges:</h4>
-  <ul>
-    <li>High-dimensional product data with overlapping attributes.</li>
-    <li>Dynamic product changes (new arrivals, discontinued items).</li>
-   
-  </ul>
+    <!-- Add other business cases similarly here... -->
 
-  <h4>Market Benefits:</h4>
-  <ul>
-    <li>Improves product recommendation systems and personalization.</li>
-    <li>Enables better shelf arrangement and inventory grouping.</li>
-  </ul>
+  </section>
 
-  <h4>Algorithms, Design Techniques, Performance Analysis:</h4>
-  <ul>
-    <li><strong>Data Structure Used:</strong> Graph-based structure to model product relationships.</li>
-    <li><strong>Algorithm:</strong> Targens (Targeted Generalized Clustering) algorithm to group products based on features and similarity metrics.</li>
-    <li><strong>Design Approach:</strong> Bottom-up hierarchical clustering with feedback refinement.</li>
-    <li><strong>Feature Handling:</strong> Uses similarity vectors derived from product attributes (e.g., category, brand, price, tags).</li>
-    <li><strong>Performance Focus:</strong> Balances clustering accuracy with computational efficiency for large-scale retail datasets.</li>
-  </ul>
-
-  <h4>Time Complexity:</h4>
-  <ul>
-    <li><strong>Clustering Step:</strong> O(n²) in worst case, optimized to near-linear with approximate techniques and sparse representations.</li>
-    <li><strong>Similarity Calculation:</strong> O(n × d), where <code>n</code> = number of products and <code>d</code> = feature dimensions.</li>
-  </ul>
-
-  <h4>Space Complexity:</h4>
-  <ul>
-    <li>O(n + e), where <code>n</code> = number of nodes (products), <code>e</code> = number of edges (similarities).</li>
-    <li>Additional O(n × d) space for storing product feature vectors.</li>
-  </ul>
-    <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/Tarjan's.cpp" target="_blank">Targan's code</a>
-
-</div>
-
-            <div class="use-case">
-                <h3>Autonomous Delivery Trucks</h3>
-                <p>Uses autonomous vehicles for last-mile delivery, enhancing logistics and reducing costs.</p>
-                <p>Dijkstra's algorithm finds the shortest path between nodes in a graph, crucial for route optimization in delivery networks. It minimizes travel time by selecting the most efficient path.</p>
-                 <img src="Images/Tarjan's_Algorithm_Animation.gif" alt="Targan's algorithm" width="400"/>
-
-  <h4>Challenges:</h4>
-  <ul>
-    <li>Real-time traffic updates, dynamic obstacles, GPS inaccuracies, and legal/regulatory issues.</li>
-  </ul>
-
-  <h4>Market Benefits:</h4>
-  <ul>
-    <li>Faster, cost-effective, and efficient last-mile delivery with reduced human dependency and improved scalability.</li>
-  
-  </ul>
-
-  <h4>Algorithms, Design Techniques, Performance Analysis:</h4>
-  <ul>
-    <li><strong>Data Structure Used:</strong> Graph-based structure to model product relationships.</li>
-    <li><strong>Algorithm:</strong> Priority Queues (for Dijkstra), HashMaps (for node lookup), Heaps.</li>
-    <li><strong>Design Approach:</strong>Greedy aproach,Priority Queue.</li>
+  <!-- Tools Section -->
+  <section id="tools">
+    <h2>Tools</h2>
+    <ul>
+      <li>Python</li>
+      <li>GitHub</li>
+      <li>VS Code</li>
+      <li>Linux</li>
     </ul>
+  </section>
 
-  <h4>Time Complexity: O((V + E) log V), where V is the number of vertices and E is the number of edges</h4>
-  
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: sanjanabhat@example.com</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/sanjanabhat" target="_blank">linkedin.com/in/sanjanabhat</a></p>
+  </section>
 
-  <h4>Space Complexity: O(V), where V is the number of vertices</h4>
-  
-    <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/Dijkstras.cpp" target="_blank">Targan's code</a>
-
-            </div>
-              <div class="use-case">
-  <h3>Product Recommendation</h3>
-  <p>Applies A* search to recommend products by predicting optimal user-product matches based on preferences and browsing history.</p>
-  <img src="Images/Tarjan's_Algorithm_Animation.gif" alt="Targan's algorithm" width="400"/>
-
-  <h4>Challenges:</h4>
-  <ul>
-    <li>Defining an effective heuristic, scaling for large product databases, handling sparse user interaction data.</li>
-   
-  </ul>
-
-  <h4>Market Benefits:</h4>
-  <ul>
-    <li>Personalized shopping experience, increased conversion rates, reduced user search time.</li>
-  </ul>
-
-  <h4>Algorithms, Design Techniques, Performance Analysis:</h4>
-  <ul>
-    <li><strong>Algorithm:</strong> A* Search Algorithm</li>
-    <li><strong>Design Approach:</strong>  Heuristic-based search (Greedy + Dijkstra)</li>
-  </ul>
-
-  <h4>Time Complexity: O(b^d), where b is branching factor and d is depth</h4>
-  
-
-  <h4>Space Complexity: O(b^d)</h4>
-  <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/A_Star.cpp" target="_blank">A* code</a>
-
-</div>
-             <!-- Tools Section -->
-            <section id="tools" class="section">
-                <h2>Tools</h2>
-                <ul>
-                    <li>Python</li>
-                    <li>GitHub</li>
-                    <li>VS Code</li>
-                    <li>Linux</li>
-                </ul>
-            </section>
-            <!-- Contact Section -->
-            <section id="contact" class="section">
-                <h2>Contact</h2>
-                <p>Email: sanjanabhat@example.com</p>
-                <p>LinkedIn: <a href="https://linkedin.com/in/sanjanabhat" target="_blank">linkedin.com/in/sanjanabhat</a></p>
-            </section>
-        </main>
-        <footer>
-            <p>© 2024 Sanjana Bhat. All rights reserved.</p>
-        </footer>
+  <footer>
+    <p>© 2024 Sanjana Bhat. All rights reserved.</p>
+  </footer>
 </body>
 
 </html>
