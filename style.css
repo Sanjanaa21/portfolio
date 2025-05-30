@@ -1,35 +1,187 @@
-<header>
-  <h1>Your Name / Website Title</h1>
-  <p>A short tagline or subtitle goes here</p>
+/* Google Font */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+}
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About Me</a>
-    <a href="#business-cases">Business Cases</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+/* Header */
+header {
+    background-color: #ffffff;
+    padding: 40px 20px 20px; /* reduced bottom padding for nav */
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-<section id="home" class="section">
-  <h2>Home</h2>
-  <p>Welcome to the home section.</p>
-</section>
+/* Title and subtitle */
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #222;
+}
 
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>Some info about you.</p>
-</section>
+header p {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
 
-<section id="business-cases" class="section">
-  <h2>Business Cases Domain</h2>
-  <p>Details about your business cases.</p>
-</section>
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: #fff;
+    padding-bottom: 10px;
+    border-top: 1px solid #eee;
+}
 
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <p>Contact info or form.</p>
-</section>
+nav a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-<footer>
-  &copy; 2025 Your Name. All rights reserved.
-</footer>
+nav a:hover,
+nav a:focus {
+    background-color: #e67e22;
+    color: white;
+    outline: none;
+}
+
+/* Sections */
+.section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.03);
+}
+
+.section h2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+    padding-top: 30px;
+    color: #2d2d2d;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+
+/* Paragraphs */
+.section p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+/* Lists */
+ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Use Case Cards */
+.use-case {
+    background-color: #f5f5f5;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-left: 4px solid #e67e22;
+    border-radius: 8px;
+}
+
+.use-case h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+/* Contact Links */
+#contact ul {
+    list-style: none;
+    padding: 0;
+}
+
+#contact li {
+    margin: 10px 0;
+}
+
+#contact a {
+    text-decoration: none;
+    color: #007acc;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: #e67e22;
+}
+
+/* Portfolio Details */
+dl {
+    margin: 0;
+}
+
+dt {
+    font-weight: 600;
+    margin-top: 10px;
+    color: #444;
+}
+
+dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Blockquote */
+blockquote {
+    font-style: italic;
+    background: #f0f0f0;
+    border-left: 4px solid #e67e22;
+    padding: 10px 20px;
+    margin: 30px 0;
+    border-radius: 8px;
+    color: #444;
+}
+
+/* Footer */
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .section {
+        padding: 20px 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
