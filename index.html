@@ -130,18 +130,16 @@
       <h3>Customer Relationship Management (CRM) Data Synchronization</h3>
       <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
       <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p><strong>Challenges:</strong> Handling duplicate or conflicting customer records across different platforms.  Ensuring all updates reflect across systems instantly without data loss.</p>
+      <p><strong>Market Benefits:</strong> Faster Access, Enhanced User Experience</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
         <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
         <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Space Complexity:</strong> O(n).</li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/AVL.cpp" target="_blank">AVL Tree code</a>
     </article>
 
   <hr />
@@ -149,19 +147,25 @@
      <article>
       <h3>Automated Lead Scoring System</h3>
       <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <img src="Images/heap.png" alt="heap" width="400" />
+      <p><strong>Challenges:</strong>Dealing with inconsistent scoring across departments. Rebalancing when leads are updated or removed.</p>
+      <p><strong>Market Benefits:</strong>Prioritized sales targeting with near real-time adjustments. Improved conversion rates by focusing on high-potential leads.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
-        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
-        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</li>
+        <li><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</li>
         <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
         <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Time Complexity:</strong>
+          <ul>
+            <li>Insertion: O(log n)</li>
+            <li>Get Top k Leads: O(k logn)</li>
+            <li>Traversal:O(1)</li>
+            <li>Access: O(log n)</li>
+          </ul></li>
+        <li><strong>Space Complexity:</strong> O(n) for n leads.</li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/heap.cpp" target="_blank">Heap Code</a>
     </article>
 <hr />
     <article>
