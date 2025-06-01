@@ -171,61 +171,82 @@
 <hr />
     <br><br>
     <article>
-      <h3>Real-Time Case Management and Routing</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <h3>Sales Forecasting and Trend Analysis</h3>
+      <p> Salesforce processes millions of transactions daily, requiring fast forecasting, temporal analysis, and comparative insights across regions and time periods. Persistent Segment Trees enable this by offering versioned data tracking, rapid historical queries in logarithmic time, and memory-efficient storage through structural sharing. This empowers real-time "what-if" simulations and precise trend analysis.</p>
+      <img src="Images/persistent.png" alt="Persistent segment tree" width="400" />
+      <p><strong>Challenges:</strong> High frequency data updates, real time trend extraction.</p>
+      <p><strong>Market Benefits:</strong> Faster sales insight generation, High-value forecasting, version-based comparision.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
         <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Time Complexity:</strong>update,Query: O(log n)</li>
+        <li><strong>Space Complexity:</strong> O(log n) per version.</li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/persistent.cpp" target="_blank">A* algorithm code</a>
     </article>
 <br><br>
     <hr />
     <br><br>
      <article>
-      <h3>Workflow Automation with Dependency Tracking</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <h3>Real-Time Case Management and Routing</h3>
+      <p> Salesforce's Real-Time Case Management and Routing, each case is routed optimally through agents, departments, or decision trees. A* helps identify the shortest or most efficient path for resolution based on both: Actual cost (time, resource load, agent availability), Estimated cost to goal (heuristic: urgency, complexity, escalation level).</p>
+      <img src="Images/a_-search-algorithm-2.png" alt="A*" width="400" />
+      <p><strong>Challenges:</strong> Dynamic updates, Heuristic Design, State Explosion, Response Time, Continuous Routing.</p>
+      <p><strong>Market Benefits:</strong> Faster Case Resolution, Dynamic load balancing, better customer experience,cost optimization.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
         <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
         <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
         <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Time Complexity:</strong><ul><li> In grid-based or graph-based routing: O(E + V log V) with priority queue and proper data structures.</li>
+        <li>Worst Case: O(b^d) Where b is branching factor (number of adjacent nodes), d is depth of the optimal solution.</li>
+        </ul></li>
+        <li><strong>Space Complexity:</strong> O(b^d) for storing all nodes in the open and closed sets (may be optimized).</li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/Best_first.cpp" target="_blank">A* algorithm code</a>
+    </article>
+<br><br>
+    <hr />
+    <br><br> 
+     <article>
+      <h3>Workflow Automation with Dependency Tracking</h3>
+      <p>Workflows often involve tasks that depend on the completion of other tasks (e.g., approvals, notifications, data updates). Ensuring that all dependencies are resolved before executing a task is crucial for reliable automation.</p>
+      <img src="Images/topological.gif" alt="Topological-sort" width="400" />
+      <p><strong>Challenges:</strong> Cyclic dependencies, dynnamic workflows, parallel execution.</p>
+      <p><strong>Market Benefits:</strong> reliable automation, Reduced operational delays, Improved visibility</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Topological Sort: Directed acyclic graph (DAG), Depth-first search (DFS)</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong>O(V+E). The outer for loop will be executed V number of times and the inner for loop will be executed E number of times.</li>
+        <li><strong>Space Complexity:</strong> O(V). The queue needs to store all the vertices of the graph.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/topological-sort.cpp" target="_blank">Code for topological sort.</a>
     </article>
     <br><br>
 <hr />
     <br><br>
      <article>
       <h3>Customer Sentiment Analysis Integration</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p></p>
+      <img src="Images/topological.gif" alt="Topological-sort" width="400" />
+      <p><strong>Challenges:</strong></p>
+      <p><strong>Market Benefits:</strong> .
+      </p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
         <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
         <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
         <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Time Complexity:</strong> O(V+E). The outer for loop will be executed V number of times and the inner for loop will be executed E number of times.</li>
+        <li><strong>Space Complexity:</strong> </li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/" target="_blank"></a>
     </article>
     <br><br>
 <hr />
