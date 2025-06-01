@@ -415,18 +415,16 @@
       <h3>Field Service Management</h3>
       <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
       <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p><strong>Challenges:</strong> Route explosion, Real-time recalculation.</p>
+      <p><strong>Market Benefits:</strong> Optimal technician routing, improved customer satisfaction, dynamic adjustments.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
-        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Data Structure used:</strong> Ant Colony Optimization (ACO) – a probabilistic technique inspired by the behavior of real ants finding the shortest paths using pheromone trails to solve travelling salesman Problem.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Time Complexity:</strong> Per iteration (per ant): O(n²); Total: O(k × m × n²) where, k: number of iterations, m: number of ants, n: number of cities/tasks</li>
+        <li><strong>Space Complexity:</strong> O(n²) for: Distance matrix, Pheromone matrix, O(m × n) for all tours</li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/tsp.cpp" target="_blank">ACO based Travelling Salesman Problem.</a>
     </article>
     <br><br>
 <hr />
