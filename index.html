@@ -273,19 +273,69 @@
     <br><br>
         <article>
       <h3>Email Campaign Management with Bounce Handling</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <p>Email Campaign Management systems sends emails to a list of recipients, tracks delivery status, identifies bounced emails, and optimizes the sending process to avoid resending to bounced addresses. Incorporating data structures like queues and bloom filters helps efficiently manage sending order and quickly filter out previously bounced emails, improving performance and accuracy.</p>
       <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p><strong>Challenges:</strong> Efficient bounce detection, Handling Large Recipient Lists, Avoiding duplicate Sends.</p>
+      <p><strong>Market Benefits:</strong> Improved deliverability, cost efficiency.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
-        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Data Structure used:</strong>Quesue: Manages the sending order of recipients in FIFO manner, enabling batch processing and asynchronous sending.<br> Hash Map (Dictionary): Maintains authoritative recipient info — email status (pending, sent, bounced), retry counts, etc.<br>Bloom Filter: Provides fast probabilistic membership checks to filter out previously bounced emails before sending.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
         <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
         <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
         <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
         <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
       </ul>
+          <table>
+    <caption>Operation-wise Complexity Analysis</caption>
+    <thead>
+        <tr>
+            <th>Operation</th>
+            <th>Data Structure</th>
+            <th>Average Time Complexity</th>
+            <th>Space Complexity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Insert recipient</td>
+            <td>Hash Map (Dictionary)</td>
+            <td>O(1)</td>
+            <td>O(n), where n = recipients</td>
+        </tr>
+        <tr>
+            <td>Enqueue recipient</td>
+            <td>Queue</td>
+            <td>O(1)</td>
+            <td>O(n)</td>
+        </tr>
+        <tr>
+            <td>Dequeue recipient</td>
+            <td>Queue</td>
+            <td>O(1)</td>
+            <td>O(n)</td>
+        </tr>
+        <tr>
+            <td>Check membership</td>
+            <td>Bloom Filter</td>
+            <td>O(k), k = number of hash functions (small constant)</td>
+            <td>O(m), m = size of bit array</td>
+        </tr>
+        <tr>
+            <td>Add item to Bloom Filter</td>
+            <td>Bloom Filter</td>
+            <td>O(k)</td>
+            <td>O(m)</td>
+        </tr>
+        <tr>
+            <td>Update recipient status</td>
+            <td>Hash Map</td>
+            <td>O(1)</td>
+            <td>O(n)</td>
+        </tr>
+    </tbody>
+</table>
+
       <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
     </article>
     <br><br>
