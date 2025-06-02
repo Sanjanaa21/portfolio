@@ -104,7 +104,7 @@
         <li><strong>Time Complexity:</strong>update,Query: O(log n)</li>
         <li><strong>Space Complexity:</strong> O(log n) per version.</li>
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/persistent.cpp" target="_blank">A* algorithm code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/persistent.cpp" target="_blank">Code for persistent segment tree.</a>
     </article>
     <hr />
      <article>
@@ -185,20 +185,15 @@
         <article>
       <h3>Email Campaign Management with Bounce Handling</h3>
       <p>Email Campaign Management systems sends emails to a list of recipients, tracks delivery status, identifies bounced emails, and optimizes the sending process to avoid resending to bounced addresses. Incorporating data structures like queues and bloom filters helps efficiently manage sending order and quickly filter out previously bounced emails, improving performance and accuracy.</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <img src="Images/bloom-filter.png" alt="Queue based Bloom-filter" width="400" />
       <p><strong>Challenges:</strong> Efficient bounce detection, Handling Large Recipient Lists, Avoiding duplicate Sends.</p>
       <p><strong>Market Benefits:</strong> Improved deliverability, cost efficiency.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
         <li><strong>Data Structure used:</strong>Quesue: Manages the sending order of recipients in FIFO manner, enabling batch processing and asynchronous sending.<br> Hash Map (Dictionary): Maintains authoritative recipient info — email status (pending, sent, bounced), retry counts, etc.<br>Bloom Filter: Provides fast probabilistic membership checks to filter out previously bounced emails before sending.</li>
-        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
       </ul>
           <table>
-    <caption>Operation-wise Complexity Analysis</caption>
+    <caption>Time and Space Complexity Analysis</caption>
     <thead>
         <tr>
             <th>Operation</th>
@@ -247,7 +242,7 @@
     </tbody>
 </table>
 
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/email.py" target="_blank">code for Email Campaign Management</a>
     </article>
 <hr />
         <article>
@@ -306,20 +301,45 @@
 <hr />
         <article>
       <h3>Sales Territory Management and Optimization</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <p>Sales Territory Management involves strategically allocating customers to the most suitable sales representatives based on geography or other features such as purchase history or business potential. Efficient territory optimization can significantly improve field sales productivity, customer satisfaction, and revenue generationUsing KD-Trees (k-dimensional trees) for spatial data allows rapid nearest-neighbor queries, enabling real-time assignment of customers to sales reps. This structure is ideal for optimizing territories based on geographic proximity in 2D (latitude, longitude) or higher dimensions (e.g., sales volume, customer priority, time zones).</p>
       <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p><strong>Challenges:</strong> High dimensionality, real-time allocation, territory overlap.</p>
+      <p><strong>Market Benefits:</strong> Optimized routing, Increases sales productivity, faster CRM decisions.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
-      <ul>
-        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
-        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
-      </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      
+        <li><strong>Data Structure used:</strong> KD-TREE: Efficient nearest neighbor search in 2D or multi-dimensional space.</li>
+        <h2>KD-Tree Operation Time and Space Complexities</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Average Time Complexity</th>
+        <th>Worst-Case Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Build KD-Tree</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Nearest Neighbor Search</td>
+        <td>O(log n) (balanced tree)</td>
+        <td>O(n) (skewed or unbalanced tree)</td>
+        <td>O(log n) recursion stack</td>
+      </tr>
+      <tr>
+        <td>Insert/Delete Node</td>
+        <td>O(log n) (no balancing)</td>
+        <td>O(n) (worst case, no balancing)</td>
+        <td>O(1) per operation</td>
+      </tr>
+    </tbody>
+  </table>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/kd-tree.py" target="_blank">Code for kd-tree</a>
     </article>
 <hr />
     
