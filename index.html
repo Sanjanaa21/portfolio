@@ -302,7 +302,8 @@
         <article>
       <h3>Sales Territory Management and Optimization</h3>
       <p>Sales Territory Management involves strategically allocating customers to the most suitable sales representatives based on geography or other features such as purchase history or business potential. Efficient territory optimization can significantly improve field sales productivity, customer satisfaction, and revenue generationUsing KD-Trees (k-dimensional trees) for spatial data allows rapid nearest-neighbor queries, enabling real-time assignment of customers to sales reps. This structure is ideal for optimizing territories based on geographic proximity in 2D (latitude, longitude) or higher dimensions (e.g., sales volume, customer priority, time zones).</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <img src="Images/KDtree.png" alt="KD-tree" width="400" />
+     <img src="Images/3dtree.png" alt="3D-tree" width="400" />
       <p><strong>Challenges:</strong> High dimensionality, real-time allocation, territory overlap.</p>
       <p><strong>Market Benefits:</strong> Optimized routing, Increases sales productivity, faster CRM decisions.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
@@ -363,19 +364,53 @@
 <hr />
         <article>
       <h3>Partner Relationship Management (PRM)</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
-      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p>Partner Relationship Management (PRM) is a system or framework used by businesses to manage their relationships with distributors, resellers, affiliates, and other types of partners. It facilitates coordination, communication, onboarding, performance tracking, and sales support across a network of partner entities. Graph traversal algorithms like BFS (Breadth-First Search) and DFS (Depth-First Search) can effectively model hierarchical relationships, map influence chains, or propagate updates or scores across partners.</p>
+      <img src="Images/dfs.gif" alt="Depth First Search" width="400" />
+        <img src="Images/bfs.gif" alt="Breadth First Search" width="400" />
+      <p><strong>Challenges:</strong>Complex partner hierarchies, Cycle and duplication detection, Dynamic partner updates.</p>
+      <p><strong>Market Benefits:</strong> Improved partner visibility, Targeted communication, Data-driven decisions</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
-        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
-        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
-      </ul>
+        <li><strong>Data Structure used:</strong> Graph: Represents partner relationships.</li>
+        <li><strong>Design Approach:</strong> Graph-Based Modeling – Partners as nodes; relationships as directed edges.</li>
+         <h2>Partner Relationship Management – Time and Space Complexity</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Build Graph</td>
+        <td>O(e)</td>
+        <td>O(n + e)</td>
+      </tr>
+      <tr>
+        <td>DFS Traversal</td>
+        <td>O(n + e)</td>
+        <td>O(n) + stack (O(n))</td>
+      </tr>
+      <tr>
+        <td>BFS Traversal</td>
+        <td>O(n + e)</td>
+        <td>O(n) + queue (O(n))</td>
+      </tr>
+      <tr>
+        <td>Partner Insertion</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Partner Relationship Check</td>
+        <td>O(1) (using hash map)</td>
+        <td>O(n)</td>
+      </tr>
+    </tbody>
+  </table>
       <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
     </article>
 <hr />
