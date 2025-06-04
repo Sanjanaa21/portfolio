@@ -108,7 +108,7 @@ header p {
     color: #555;
 }
 article {
-  background: #ffffff;
+  background: #f0f0f0;
   padding: 2rem;
   margin-bottom: 2rem;
   border-radius: 10px;
@@ -245,4 +245,44 @@ hr {
     .section {
         padding: 20px 15px;
     }
+}
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Header cells */
+th {
+    background-color: #004085;
+    color: #fff;
+    padding: 14px 20px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* Data cells */
+td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+/* Alternate row coloring */
+tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Caption styling */
+caption {
+    caption-side: top;
+    padding: 12px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #222;
 }
