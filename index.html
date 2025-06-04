@@ -247,20 +247,47 @@
 <hr />
         <article>
       <h3>Salesforce Data Backup and Recovery Automation</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <p>Salesforce stores critical enterprise data such as leads, accounts, contacts, opportunities, and transactions. Data loss due to accidental deletion, corruption, or API integration errors can cause major disruptions. Hence, automated backup and recovery systems are crucial. This system periodically backs up Salesforce records and allows restoration of any record or specific version. It ensures business continuity, compliance, and reliable disaster recovery.</p>
       <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
-      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
-      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <p><strong>Challenges:</strong> Keeping track of multiple versions of records with minimal overhead, Large volumes of data and metadata need to be backed up efficiently.</p>
+      <p><strong>Market Benefits:</strong> Quick recovery ensures uninterrupted operations during failures, Helps meet compliance requirements with secure, time-stamped backups.</p>
       <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
       <ul>
-        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
-        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+        <li><strong>Data Structure used:</strong> Hash Map.</li> 
       </ul>
-      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/hash.cpp" target="_blank">code for Hash map.</a>
+          <table>
+        <caption>Time and Space Complexity</caption>
+        <thead>
+            <tr>
+                <th>Operation</th>
+                <th>Time Complexity</th>
+                <th>Space Complexity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Insert/Backup Record</td>
+                <td>O(1) average</td>
+                <td>O(n * v) — n records, v versions per record</td>
+            </tr>
+            <tr>
+                <td>Restore Latest Version</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+            </tr>
+            <tr>
+                <td>View All Versions</td>
+                <td>O(v)</td>
+                <td>O(v)</td>
+            </tr>
+            <tr>
+                <td>Restore Specific Version</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+            </tr>
+        </tbody>
+    </table>
     </article>
 <hr />
         <article>
