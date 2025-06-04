@@ -246,44 +246,58 @@ hr {
         padding: 20px 15px;
     }
 }
+/* General page styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    margin: 40px;
+    color: #222;
+}
+
 /* Table styling */
 table {
+    width: 90%;
+    margin: 0 auto;
     border-collapse: collapse;
-    width: 80%;
-    margin: auto;
-    background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-   border: 2px solid #004085;
+    border: 2px solid #004085; /* Outer border */
     border-radius: 8px;
     overflow: hidden;
-}
-
-/* Header cells */
-th {
-    background-color: #004085;
-    color: #fff;
-    padding: 14px 20px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 1.1em;
-}
-
-/* Data cells */
-td {
-    padding: 12px 20px;
-    border-bottom: 1px solid #e1e4e8;
-}
-
-/* Alternate row coloring */
-tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: #fff;
 }
 
 /* Caption styling */
 caption {
     caption-side: top;
-    padding: 12px;
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 700;
-    color: #222;
+    padding: 15px;
+    color: #004085;
+    text-align: center;
 }
+
+/* Table header cells */
+thead th {
+    background-color: #004085;
+    color: white;
+    padding: 12px 20px;
+    text-align: left;
+    border: 1px solid #004085;
+}
+
+/* Table body cells */
+tbody td {
+    padding: 12px 20px;
+    border: 1px solid #004085;
+}
+
+/* Alternate row shading */
+tbody tr:nth-child(even) {
+    background-color: #e9f0ff;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+    background-color: #d0dfff;
+    cursor: default;
+}
+
