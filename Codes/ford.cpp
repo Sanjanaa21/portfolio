@@ -1,79 +1,91 @@
+
 #include <iostream>
+#include <limits.h>
+#include <queue>
 #include <vector>
-#include <climits>
-#include <cstring>
+#include <string.h>
 using namespace std;
 
-const int MAX_V = 100; // Max number of vertices
+#define V 7 // Total nodes: Source, 3 channels, 2 customers, Sink
 
-// Residual capacity matrix
-int capacity[MAX_V][MAX_V];
+// Breadth-First Search to find augmenting path
+bool bfs(int rGraph[V][V], int s, int t, int parent[]) {
+    bool visited[V];
+    memset(visited, 0, sizeof(visited));
 
-// Visited array for DFS
-bool visited[MAX_V];
+    queue<int> q;
+    q.push(s);
+    visited[s] = true;
+    parent[s] = -1;
 
-// DFS function to find an augmenting path
-int dfs(int u, int t, int flow, int V) {
-    if (u == t)
-        return flow;
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
 
-    visited[u] = true;
-
-    for (int v = 0; v < V; v++) {
-        if (!visited[v] && capacity[u][v] > 0) {
-            int min_flow = min(flow, capacity[u][v]);
-            int bottleneck = dfs(v, t, min_flow, V);
-
-            if (bottleneck > 0) {
-                capacity[u][v] -= bottleneck;
-                capacity[v][u] += bottleneck;
-                return bottleneck;
+        for (int v = 0; v < V; v++) {
+            if (!visited[v] && rGraph[u][v] > 0) {
+                if (v == t) {
+                    parent[v] = u;
+                    return true;
+                }
+                q.push(v);
+                parent[v] = u;
+                visited[v] = true;
             }
         }
     }
 
-    return 0;
+    return false;
 }
 
 // Ford-Fulkerson algorithm
-int fordFulkerson(int source, int sink, int V) {
-    int maxFlow = 0;
+int fordFulkerson(int graph[V][V], int s, int t) {
+    int u, v;
 
-    while (true) {
-        memset(visited, 0, sizeof(visited));
-        int flow = dfs(source, sink, INT_MAX, V);
+    // Create residual graph
+    int rGraph[V][V];
+    for (u = 0; u < V; u++)
+        for (v = 0; v < V; v++)
+            rGraph[u][v] = graph[u][v];
 
-        if (flow == 0)
-            break;
+    int parent[V]; // To store path
+    int max_flow = 0; // Result
 
-        maxFlow += flow;
+    // Augment flow while path from source to sink exists
+    while (bfs(rGraph, s, t, parent)) {
+        // Find min capacity in path
+        int path_flow = INT_MAX;
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            path_flow = min(path_flow, rGraph[u][v]);
+        }
+
+        // Update residual capacities
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            rGraph[u][v] -= path_flow;
+            rGraph[v][u] += path_flow;
+        }
+
+        max_flow += path_flow;
     }
 
-    return maxFlow;
+    return max_flow;
 }
 
 int main() {
-    int V = 6; // Number of vertices
+    // Graph as capacity matrix
+    int graph[V][V] = { {0, 10, 5, 15, 0, 0, 0},  // Source to channels
+                        {0, 0, 0, 0, 6, 4, 0},    // Email to customers
+                        {0, 0, 0, 0, 5, 0, 0},    // SMS to customer A
+                        {0, 0, 0, 0, 5, 10, 0},   // Social to customers
+                        {0, 0, 0, 0, 0, 0, 10},   // Customer A to sink
+                        {0, 0, 0, 0, 0, 0, 5},    // Customer B to sink
+                        {0, 0, 0, 0, 0, 0, 0} };  // Sink
 
-    // Initialize capacity matrix with 0
-    memset(capacity, 0, sizeof(capacity));
+    int source = 0, sink = 6;
 
-    // Add edges: capacity[u][v] = capacity of edge u → v
-    capacity[0][1] = 16;
-    capacity[0][2] = 13;
-    capacity[1][2] = 10;
-    capacity[1][3] = 12;
-    capacity[2][1] = 4;
-    capacity[2][4] = 14;
-    capacity[3][2] = 9;
-    capacity[3][5] = 20;
-    capacity[4][3] = 7;
-    capacity[4][5] = 4;
-
-    int source = 0, sink = 5;
-    int maxFlow = fordFulkerson(source, sink, V);
-
-    cout << "Maximum possible flow: " << maxFlow << endl;
+    cout << "Maximum number of campaign messages delivered: "
+         << fordFulkerson(graph, source, sink) << endl;
 
     return 0;
 }
