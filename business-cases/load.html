@@ -139,10 +139,10 @@
     <aside class="sidebar">
       <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
       <ul>
-        <li><a href="#">Lead Scoring System</a></li>
-        <li><a href="#">Case Routing</a></li>
-        <li><a href="#">Workflow Automation</a></li>
-        <li><a href="#">Inventory Sync</a></li>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
       </ul>
     </aside>
 
@@ -150,17 +150,13 @@
       <h1 class="header">Automated Lead Scoring System</h1>
       <p class="subtitle">Prioritize leads efficiently using AI-based dynamic scoring.</p>
 
-      <div class="card">
+      <div class="card" id="intro">
         <h3>Business Case</h3>
       <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
       </div>
-      <div class="card">
-        <h3>Image</h3>
-        <img src="Images/heap.png" alt= "heap" width="400" />    
-      </div>
-
-      <div class="card">
-        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+      <div class="card" id="performance">
+      <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+        <img src="Images/heap.png" alt= "heap" width="400" /> 
          <ul>
         <li><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</li>
         <li><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</li>
@@ -177,7 +173,7 @@
       </ul>
       </div>
 
-      <div class="card">
+      <div class="card" id ="code"> 
         <h3>Code</h3>
         <div class="code-block">
 <pre>
@@ -271,7 +267,7 @@ int main() {
         </div>
       </div>
 
-      <div class="card">
+      <div class="card" id ="complexity">
         <h3>⏱️ Time Complexity</h3>
         <table>
           <tr>
