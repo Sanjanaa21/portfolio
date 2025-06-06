@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sanjana Bhat | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about-me">About Me</a>
+    <a href="#salesforce-domain">Domain: Salesforce</a>
+    <a href="#business-cases">Business Cases</a>
+    <a href="#tools">Tools</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h2>Welcome to My Portfolio</h2>
+    <p>Hello, I'm Sanjana Bhat👋</p>
+    <p>I am passionate about technology and problem-solving.</p>
+  </section>
+
+  <!-- About Me Section -->
+  <section id="about-me">
+    <h2>About Me</h2>
+    <p>I'm a 6th semester Computer Science Engineering student at KLE Technological University, with a CGPA of 9.20. I’m passionate about using technology to solve real-world problems and create meaningful user experiences.</p>
+    <p>I am passionate about technology and problem-solving. Beyond technical skills, I’m deeply curious about how tech impacts businesses and society. I’ve explored several business case studies and continuously strive to build software that aligns with user needs and market trends.</p>
+    <p>I’m always eager to learn, collaborate, and take on new challenges. Let’s connect and build something impactful together!</p>
+  </section>
+
+  <!-- Salesforce Domain Section -->
+  <section id="salesforce-domain">
+    <h2>Domain Chosen: Salesforce</h2>
+    <img src="Images/salesforce.png" alt="salesforce" width="400"/>
+    <p>Salesforce Inc. is a multinational cloud-based software company that provides customer relationship management (CRM) services and a suite of enterprise applications focused on customer service, marketing automation, analytics, and application development.</p>
+    <p>Headquartered in San Francisco, California, Salesforce is known for pioneering cloud computing and revolutionizing how companies interact with their customers. The company has consistently ranked among the top Fortune Global 500 companies and drives innovation in CRM through AI, automation, and data-driven solutions.</p>
+    <p>This portfolio explores various innovative business cases that showcase how the company matches technology to stay ahead in the global market.</p>
+  </section>
+<section class="business-cases">
+  <h2> Business Cases</h2>
+  <div class="card-grid">
+    <a href="business-cases/crm.html" class="case-card">
+      <h3>CRM</h3>
+      <p>HI.</p>
+    </a>
+     <a href="business-cases/crm.html" class="case-card">
+      <h3>CRM</h3>
+      <p>HI.</p>
+    </a>
+     <a href="business-cases/crm.html" class="case-card">
+      <h3>CRM</h3>
+      <p>HI.</p>
+    </a>
+     <a href="business-cases/crm.html" class="case-card">
+      <h3>CRM</h3>
+      <p>HI.</p>
+    </a>
+     <a href="business-cases/load.html" class="case-card">
+      <h3>CRM</h3>
+      <p>HI.</p>
+    </a>
+     </div>
+</section>
+  <!-- Business Cases Section -->
+  <section id="business-cases">
+    <h2>Business Cases</h2>
+
+  
+
+    <article>
+      <h3>Customer Relationship Management (CRM) Data Synchronization</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <p><strong>Challenges:</strong> Handling duplicate or conflicting customer records across different platforms.  Ensuring all updates reflect across systems instantly without data loss.</p>
+      <p><strong>Market Benefits:</strong> Faster Access, Enhanced User Experience</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
+        <li><strong>Space Complexity:</strong> O(n).</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/AVL.cpp" target="_blank">AVL Tree code</a>
+    </article>
+    <artcile>
+    <a href="business-cases/crm.html" class="case-card">
+      <h3>Customer Relationship Management (CRM) Data Synchronization</h3>
+      <p>Fast access and real-time synchronization of customer interactions using efficient data structures.</p>
+    </a>
+      </artcile>
+
+  <hr />
+    <div class="card-container">
+    <a href="#crm-details" class="business-card">
+      <h3>Customer Relationship Management (CRM) Data Synchronization</h3>
+      <p>Fast access and real-time synchronization of customer interactions using efficient data structures.</p>
+    </a>
+     <article>
+      <h3>Automated Lead Scoring System</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <img src="Images/heap.png" alt="heap" width="400" />
+      <p><strong>Challenges:</strong>Dealing with inconsistent scoring across departments. Rebalancing when leads are updated or removed.</p>
+      <p><strong>Market Benefits:</strong>Prioritized sales targeting with near real-time adjustments. Improved conversion rates by focusing on high-potential leads.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</li>
+        <li><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong>
+          <ul>
+            <li>Insertion: O(log n)</li>
+            <li>Get Top k Leads: O(k logn)</li>
+            <li>Traversal:O(1)</li>
+            <li>Access: O(log n)</li>
+          </ul></li>
+        <li><strong>Space Complexity:</strong> O(n) for n leads.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/heap.cpp" target="_blank">Heap Code</a>
+    </article>
+<hr />
+    <article>
+      <h3>Sales Forecasting and Trend Analysis</h3>
+      <p> Salesforce processes millions of transactions daily, requiring fast forecasting, temporal analysis, and comparative insights across regions and time periods. Persistent Segment Trees enable this by offering versioned data tracking, rapid historical queries in logarithmic time, and memory-efficient storage through structural sharing. This empowers real-time "what-if" simulations and precise trend analysis.</p>
+      <img src="Images/persistent.png" alt="Persistent segment tree" width="400" />
+      <p><strong>Challenges:</strong> High frequency data updates, real time trend extraction.</p>
+      <p><strong>Market Benefits:</strong> Faster sales insight generation, High-value forecasting, version-based comparision.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Time Complexity:</strong>update,Query: O(log n)</li>
+        <li><strong>Space Complexity:</strong> O(log n) per version.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/persistent.cpp" target="_blank">Code for persistent segment tree.</a>
+    </article>
+    <hr />
+     <article>
+      <h3>Real-Time Case Management and Routing</h3>
+      <p> Salesforce's Real-Time Case Management and Routing, each case is routed optimally through agents, departments, or decision trees. A* helps identify the shortest or most efficient path for resolution based on both: Actual cost (time, resource load, agent availability), Estimated cost to goal (heuristic: urgency, complexity, escalation level).</p>
+      <img src="Images/a_-search-algorithm-2.png" alt="A*" width="400" />
+      <p><strong>Challenges:</strong> Dynamic updates, Heuristic Design, State Explosion, Response Time, Continuous Routing.</p>
+      <p><strong>Market Benefits:</strong> Faster Case Resolution, Dynamic load balancing, better customer experience,cost optimization.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> A* algorithm: Heiuristic-vased search, Greedy approach.
+        Best-First Search: Heuristic-based search, Priority Queue.</li>
+        <li><strong>Time Complexity:</strong><ul><li> In grid-based or graph-based routing: O(E + V log V) with priority queue and proper data structures.</li>
+        <li>Worst Case: O(b^d) Where b is branching factor (number of adjacent nodes), d is depth of the optimal solution.</li>
+        </ul></li>
+        <li><strong>Space Complexity:</strong> O(b^d) for storing all nodes in the open and closed sets (may be optimized).</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/Best_first.cpp" target="_blank">A* algorithm code</a>
+    </article>
+    <hr />
+     <article>
+      <h3>Workflow Automation with Dependency Tracking</h3>
+      <p>Workflows often involve tasks that depend on the completion of other tasks (e.g., approvals, notifications, data updates). Ensuring that all dependencies are resolved before executing a task is crucial for reliable automation.</p>
+      <img src="Images/topological.gif" alt="Topological-sort" width="400" />
+      <p><strong>Challenges:</strong> Cyclic dependencies, dynnamic workflows, parallel execution.</p>
+      <p><strong>Market Benefits:</strong> reliable automation, Reduced operational delays, Improved visibility</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Topological Sort: Directed acyclic graph (DAG), Depth-first search (DFS)</li>
+        <li><strong>Time Complexity:</strong>O(V+E). The outer for loop will be executed V number of times and the inner for loop will be executed E number of times.</li>
+        <li><strong>Space Complexity:</strong> O(V). The queue needs to store all the vertices of the graph.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/topological-sort.cpp" target="_blank">Code for topological sort.</a>
+    </article>
+<hr />
+     <article>
+      <h3>E-commerce Order and Inventory Sync</h3>
+      <p>A Treap (Cartesian Tree) can be used to maintain the inventory of products, allowing for efficient insertion, deletion, and search operations. This is particularly useful for managing large inventories with frequent updates and queries.</p>
+      <img src="Images/Treap.svg" alt="Treap" width="400" />
+       <p>A treap is a data structure which combines binary tree and binary heap (hence the name: tree + heap ⇒Treap). More specifically, treap is a data structure that stores pairs   (X,Y) in a binary tree in such a way that it is a binary search tree by X and a binary heap by Y. If some node of the tree contains values (X0,Y0), all nodes in the left subtree have X≤X0, all nodes in the right subtree have X0≤X, and all nodes in both left and right subtrees have Y≤Y0.</p>
+      <p><strong>Challenges:</strong>Random Priority Management, Range Query Optimization</p>
+      <p><strong>Market Benefits:</strong> Fast Inventory Management, Sorted data access.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong> O(V+E). The outer for loop will be executed V number of times and the inner for loop will be executed E number of times.</li>
+        <li><strong>Space Complexity:</strong> </li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/treap.cpp" target="_blank">Code For Treap.</a>
+    </article>
+<hr />
+        <article>
+      <h3>Dynamic User Access and Permission Management</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
+      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
+        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+    </article>
+<hr />
+        <article>
+      <h3>Email Campaign Management with Bounce Handling</h3>
+      <p>Email Campaign Management systems sends emails to a list of recipients, tracks delivery status, identifies bounced emails, and optimizes the sending process to avoid resending to bounced addresses. Incorporating data structures like queues and bloom filters helps efficiently manage sending order and quickly filter out previously bounced emails, improving performance and accuracy.</p>
+      <img src="Images/bloom-filter.png" alt="Queue based Bloom-filter" width="400" />
+      <p><strong>Challenges:</strong> Efficient bounce detection, Handling Large Recipient Lists, Avoiding duplicate Sends.</p>
+      <p><strong>Market Benefits:</strong> Improved deliverability, cost efficiency.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong>Quesue: Manages the sending order of recipients in FIFO manner, enabling batch processing and asynchronous sending.<br> Hash Map (Dictionary): Maintains authoritative recipient info — email status (pending, sent, bounced), retry counts, etc.<br>Bloom Filter: Provides fast probabilistic membership checks to filter out previously bounced emails before sending.</li>
+      </ul>
+          <table>
+    <caption>Time and Space Complexity Analysis</caption>
+    <thead>
+        <tr>
+            <th>Operation</th>
+            <th>Data Structure</th>
+            <th>Average Time Complexity</th>
+            <th>Space Complexity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Insert recipient</td>
+            <td>Hash Map (Dictionary)</td>
+            <td>O(1)</td>
+            <td>O(n), where n = recipients</td>
+        </tr>
+        <tr>
+            <td>Enqueue recipient</td>
+            <td>Queue</td>
+            <td>O(1)</td>
+            <td>O(n)</td>
+        </tr>
+        <tr>
+            <td>Dequeue recipient</td>
+            <td>Queue</td>
+            <td>O(1)</td>
+            <td>O(n)</td>
+        </tr>
+        <tr>
+            <td>Check membership</td>
+            <td>Bloom Filter</td>
+            <td>O(k), k = number of hash functions (small constant)</td>
+            <td>O(m), m = size of bit array</td>
+        </tr>
+        <tr>
+            <td>Add item to Bloom Filter</td>
+            <td>Bloom Filter</td>
+            <td>O(k)</td>
+            <td>O(m)</td>
+        </tr>
+        <tr>
+            <td>Update recipient status</td>
+            <td>Hash Map</td>
+            <td>O(1)</td>
+            <td>O(n)</td>
+        </tr>
+    </tbody>
+</table>
+
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/email.py" target="_blank">code for Email Campaign Management</a>
+    </article>
+<hr />
+        <article>
+      <h3>Salesforce Data Backup and Recovery Automation</h3>
+      <p>Salesforce stores critical enterprise data such as leads, accounts, contacts, opportunities, and transactions. Data loss due to accidental deletion, corruption, or API integration errors can cause major disruptions. Hence, automated backup and recovery systems are crucial. This system periodically backs up Salesforce records and allows restoration of any record or specific version. It ensures business continuity, compliance, and reliable disaster recovery.</p>
+      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <p><strong>Challenges:</strong> Keeping track of multiple versions of records with minimal overhead, Large volumes of data and metadata need to be backed up efficiently.</p>
+      <p><strong>Market Benefits:</strong> Quick recovery ensures uninterrupted operations during failures, Helps meet compliance requirements with secure, time-stamped backups.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Hash Map.</li> 
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/hash.cpp" target="_blank">code for Hash map.</a>
+          <table>
+        <caption>Time and Space Complexity</caption>
+        <thead>
+            <tr>
+                <th>Operation</th>
+                <th>Time Complexity</th>
+                <th>Space Complexity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Insert/Backup Record</td>
+                <td>O(1) average</td>
+                <td>O(n * v) — n records, v versions per record</td>
+            </tr>
+            <tr>
+                <td>Restore Latest Version</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+            </tr>
+            <tr>
+                <td>View All Versions</td>
+                <td>O(v)</td>
+                <td>O(v)</td>
+            </tr>
+            <tr>
+                <td>Restore Specific Version</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+            </tr>
+        </tbody>
+    </table>
+    </article>
+<hr />
+        <article>
+      <h3>Multi-Channel Customer Interaction Tracking</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
+      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
+        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio.github.io/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+    </article>
+<hr />
+        <article>
+      <h3>Customizable Dashboard with Real-Time Analytics</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+      <p><strong>Challenges:</strong> Handling duplicate product IDs or SKUs. Managing real-time stock updates with minimal delay.</p>
+      <p><strong>Market Benefits:</strong> Faster Access, supports automated inventory alerts</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
+        <li><strong>Space Complexity:</strong> O(n) where n is the number of inventory items.</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/AVL.c" target="_blank">AVL Tree code</a>
+    </article>
+<hr />
+        <article>
+      <h3>Sales Territory Management and Optimization</h3>
+      <p>Sales Territory Management involves strategically allocating customers to the most suitable sales representatives based on geography or other features such as purchase history or business potential. Efficient territory optimization can significantly improve field sales productivity, customer satisfaction, and revenue generationUsing KD-Trees (k-dimensional trees) for spatial data allows rapid nearest-neighbor queries, enabling real-time assignment of customers to sales reps. This structure is ideal for optimizing territories based on geographic proximity in 2D (latitude, longitude) or higher dimensions (e.g., sales volume, customer priority, time zones).</p>
+      <img src="Images/KDtree.png" alt="KD-tree" width="400" />
+     <img src="Images/3dtree.png" alt="3D-tree" width="400" />
+      <p><strong>Challenges:</strong> High dimensionality, real-time allocation, territory overlap.</p>
+      <p><strong>Market Benefits:</strong> Optimized routing, Increases sales productivity, faster CRM decisions.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      
+        <li><strong>Data Structure used:</strong> KD-TREE: Efficient nearest neighbor search in 2D or multi-dimensional space.</li>
+        <h2>KD-Tree Operation Time and Space Complexities</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Average Time Complexity</th>
+        <th>Worst-Case Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Build KD-Tree</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Nearest Neighbor Search</td>
+        <td>O(log n) (balanced tree)</td>
+        <td>O(n) (skewed or unbalanced tree)</td>
+        <td>O(log n) recursion stack</td>
+      </tr>
+      <tr>
+        <td>Insert/Delete Node</td>
+        <td>O(log n) (no balancing)</td>
+        <td>O(n) (worst case, no balancing)</td>
+        <td>O(1) per operation</td>
+      </tr>
+    </tbody>
+  </table>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/kd-tree.py" target="_blank">Code for kd-tree</a>
+    </article>
+<hr />
+    
+        <article>
+      <h3>Multi-Channel Marketing Campaign Orchestration</h3>
+      <p>Multi-Channel Marketing Campaign Orchestration is about delivering personalized marketing content to the right customers through multiple communication channels (Email, SMS, Social Media, etc.) within defined constraints such as budget, time slots, and channel capacity. By modeling this as a flow network, we can apply the Ford-Fulkerson algorithm to maximize the number of successful message deliveries. This ensures optimal resource usage and maximized campaign reach.</p>
+      <img src="Images/flow-network.webp" alt="Ford -fulkerson" width="400" />
+      <img src="Images/ford-fulkerson.png" alt="Ford -fulkerson" width="400" />
+      <p><strong>Challenges:</strong> Channel Constraints	, Customer Fatigue, Optimal Routing. </p>
+      <p><strong>Market Benefits:</strong> Ensures the highest number of message deliveries within constraints, Efficient Budget Use, Helps identify high-yield channels based on flow distribution.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Ford-fulkerson.</li>
+        <li><strong>Design Approach:</strong>
+Adjacency Matrix (int graph[V][V]):	Stores capacities between nodes (channels/customers).
+Residual Graph	:Tracks remaining capacities after each augmentation.
+Parent Array (int parent[V]):	Stores augmenting path during BFS.
+Queue (BFS):	For traversing the graph level-by-level to find paths.</li>    
+      </ul>
+           <h2>Time and Space Complexity - Ford-Fulkerson Algorithm</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Description</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BFS per iteration</td>
+        <td>Traverses all edges to find one augmenting path</td>
+        <td>O(E)</td>
+        <td>O(V)</td>
+      </tr>
+      <tr>
+        <td>Number of augmenting paths (max)</td>
+        <td>Proportional to total flow</td>
+        <td>O(F)</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>Total Time Complexity</strong></td>
+        <td>Edmonds-Karp (BFS-based Ford-Fulkerson)</td>
+        <td><strong>O(V × E²)</strong></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Residual Capacity Graph</td>
+        <td>Stores updated capacities between all node pairs</td>
+        <td>—</td>
+        <td>O(V²)</td>
+      </tr>
+      <tr>
+        <td>Parent Array</td>
+        <td>Stores path from source to sink during BFS</td>
+        <td>—</td>
+        <td>O(V)</td>
+      </tr>
+      <tr>
+        <td>Queue for BFS</td>
+        <td>Used for level-order traversal</td>
+        <td>—</td>
+        <td>O(V)</td>
+      </tr>
+      <tr>
+        <td><strong>Total Space Complexity</strong></td>
+        <td>Graph + parent array + queue</td>
+        <td>—</td>
+        <td><strong>O(V²)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/ford.cpp" target="_blank">Code for Ford-fulkerson.</a>
+    </article>
+<hr />
+        <article>
+      <h3>Partner Relationship Management (PRM)</h3>
+      <p>Partner Relationship Management (PRM) is a system or framework used by businesses to manage their relationships with distributors, resellers, affiliates, and other types of partners. It facilitates coordination, communication, onboarding, performance tracking, and sales support across a network of partner entities. Graph traversal algorithms like BFS (Breadth-First Search) and DFS (Depth-First Search) can effectively model hierarchical relationships, map influence chains, or propagate updates or scores across partners.</p>
+      <img src="Images/dfs.gif" alt="Depth First Search" width="400" />
+        <img src="Images/bfs.gif" alt="Breadth First Search" width="400" />
+      <p><strong>Challenges:</strong>Complex partner hierarchies, Cycle and duplication detection, Dynamic partner updates.</p>
+      <p><strong>Market Benefits:</strong> Improved partner visibility, Targeted communication, Data-driven decisions</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Graph: Represents partner relationships.</li>
+        <li><strong>Design Approach:</strong> Graph-Based Modeling – Partners as nodes; relationships as directed edges.</li>
+         <h2>Partner Relationship Management – Time and Space Complexity</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Build Graph</td>
+        <td>O(e)</td>
+        <td>O(n + e)</td>
+      </tr>
+      <tr>
+        <td>DFS Traversal</td>
+        <td>O(n + e)</td>
+        <td>O(n) + stack (O(n))</td>
+      </tr>
+      <tr>
+        <td>BFS Traversal</td>
+        <td>O(n + e)</td>
+        <td>O(n) + queue (O(n))</td>
+      </tr>
+      <tr>
+        <td>Partner Insertion</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Partner Relationship Check</td>
+        <td>O(1) (using hash map)</td>
+        <td>O(n)</td>
+      </tr>
+    </tbody>
+  </table>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/bfs.cpp" target="_blank">BFS code</a>
+         <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/dfs.cpp" target="_blank">DFS code</a>
+    </article>
+<hr />
+        <article>
+      <h3>Field Service Management</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <img src="Images/tsp.jpg" alt="Travelling Salesman Problem" width="400" />
+          <img src="Images/ACO.png" alt="flowchart" width="400"/>
+      <p><strong>Challenges:</strong> Route explosion, Real-time recalculation.</p>
+      <p><strong>Market Benefits:</strong> Optimal technician routing, improved customer satisfaction, dynamic adjustments.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Ant Colony Optimization (ACO) – a probabilistic technique inspired by the behavior of real ants finding the shortest paths using pheromone trails to solve travelling salesman Problem.</li>
+        <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+        <li><strong>Time Complexity:</strong> Per iteration (per ant): O(n²); Total: O(k × m × n²) where, k: number of iterations, m: number of ants, n: number of cities/tasks</li>
+        <li><strong>Space Complexity:</strong> O(n²) for: Distance matrix, Pheromone matrix, O(m × n) for all tours</li>
+      </ul>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/tsp.cpp" target="_blank">ACO based Travelling Salesman Problem.</a>
+    </article>
+<hr />
+        <article>
+      <h3>Mergers & Acquisitions Integration</h3>
+      <p>Mergers and Acquisitions (M&A) involve integrating two or more companies into a unified operational, technological, and data structure. In software systems, this means merging organizational hierarchies, databases, access controls, and business processes efficiently without redundancy or conflict.
+ Objective: Efficiently identify, merge, and manage interconnected systems, ensuring data consistency and minimizing duplication or integration errors.</p>
+      <img src="Images/union.gif" alt="Union-find" width="400" />
+          
+      <p><strong>Challenges:</strong> Redundancy Detection, Conflict Resolution, Business and IT layers may be interlinked in non-trivial ways.</p>
+      <p><strong>Market Benefits:</strong> Faster Integration, 	Ensures structured integration paths and proper data ownership resolution, Tracks the complete connected structure of entities post-merger</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong>Union-Find (DSU)	Efficiently track and merge groups of systems</li>
+        
+      </ul>
+          <h2>Time and Space Complexity: M&A Integration (Union-Find)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Initialization (DSU of N nodes)</td>
+        <td><code>O(N)</code></td>
+        <td><code>O(N)</code></td>
+      </tr>
+      <tr>
+        <td><code>find(x)</code> with path compression</td>
+        <td><code>O(α(N))</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><code>union(x, y)</code> with union by rank</td>
+        <td><code>O(α(N))</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Total merges (M operations)</td>
+        <td><code>O(M × α(N))</code></td>
+        <td><code>O(N)</code></td>
+      </tr>
+    </tbody>
+  </table>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/union.cpp" target="_blank">Code for union-find.</a>
+    </article>
+<hr />
+       
+  </section>
+
+  <!-- Tools Section -->
+  <section id="tools">
+    <h2>Tools</h2>
+    <ul>
+      <li>Python</li>
+      <li>GitHub</li>
+      <li>VS Code</li>
+      <li>Linux</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: sanjanabhat622@gmail.com</p>
+    <p>LinkedIn: <a href="www.linkedin.com/in/sanjana-bhat-57992626a" target="_blank">linkedin.com/in/sanjanabhat</a></p>
+  </section>
+
+  <footer>
+    <p>© 2024 Sanjana Bhat. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>
