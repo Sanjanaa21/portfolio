@@ -151,35 +151,122 @@
       <p class="subtitle">Prioritize leads efficiently using AI-based dynamic scoring.</p>
 
       <div class="card">
-        <h3>📊 Business Case</h3>
-        <p>Salesforce users often struggle with identifying which leads are most likely to convert. Automating lead scoring based on engagement, source, and firmographic data boosts sales productivity by over 25%.</p>
+        <h3>Business Case</h3>
+      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      </div>
+      <div class="card">
+        <h3>Image</h3>
+        <img src="Images/heap.png" alt= "heap" width="400" />    
       </div>
 
       <div class="card">
-        <h3>🔍 How It Works</h3>
-        <ul>
-          <li>Analyze features like email engagement, industry, revenue, etc.</li>
-          <li>Train ML models to predict conversion probabilities.</li>
-          <li>Score range: 0 (cold) to 100 (hot lead)</li>
-          <li>Integrate scores into Salesforce dashboards or workflows.</li>
-        </ul>
+        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+         <ul>
+        <li><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</li>
+        <li><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</li>
+        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
+        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
+        <li><strong>Time Complexity:</strong>
+          <ul>
+            <li>Insertion: O(log n)</li>
+            <li>Get Top k Leads: O(k logn)</li>
+            <li>Traversal:O(1)</li>
+            <li>Access: O(log n)</li>
+          </ul></li>
+        <li><strong>Space Complexity:</strong> O(n) for n leads.</li>
+      </ul>
       </div>
 
       <div class="card">
-        <h3>💻 Sample Python Code (using Random Forest)</h3>
+        <h3>Code</h3>
         <div class="code-block">
 <pre>
-from sklearn.ensemble import RandomForestClassifier
-import pandas as pd
+#include <iostream>
+#include <vector>
+using namespace std;
 
-df = pd.read_csv("salesforce_leads.csv")
-X = df[["industry_score", "email_clicks", "company_size"]]
-y = df["converted"]
+struct Node {
+    int sum;
+    Node* left;
+    Node* right;
 
-model = RandomForestClassifier(n_estimators=100)
-model.fit(X, y)
+    Node(int val = 0) : sum(val), left(nullptr), right(nullptr) {}
+    Node(Node* l, Node* r) : left(l), right(r), sum(0) {
+        if (l) sum += l->sum;
+        if (r) sum += r->sum;
+    }
+};
 
-df["lead_score"] = model.predict_proba(X)[:, 1] * 100
+class PersistentSegmentTree {
+    int n;
+    vector<Node*> versions;
+
+public:
+    PersistentSegmentTree(const vector<int>& data) {
+        n = data.size();
+        Node* root = build(data, 0, n - 1);
+        versions.push_back(root);
+    }
+
+    // Build the initial tree
+    Node* build(const vector<int>& data, int l, int r) {
+        if (l == r)
+            return new Node(data[l]);
+
+        int m = (l + r) / 2;
+        return new Node(build(data, l, m), build(data, m + 1, r));
+    }
+
+    // Update: returns root of new version
+    Node* update(Node* node, int l, int r, int idx, int val) {
+        if (l == r)
+            return new Node(val);
+
+        int m = (l + r) / 2;
+        if (idx <= m)
+            return new Node(update(node->left, l, m, idx, val), node->right);
+        else
+            return new Node(node->left, update(node->right, m + 1, r, idx, val));
+    }
+
+    // Public update method
+    void createNewVersion(int idx, int val) {
+        Node* newRoot = update(versions.back(), 0, n - 1, idx, val);
+        versions.push_back(newRoot);
+    }
+
+    // Query sum in range [l, r] for a given version
+    int query(Node* node, int l, int r, int ql, int qr) {
+        if (!node || r < ql || l > qr) return 0;
+        if (ql <= l && r <= qr) return node->sum;
+
+        int m = (l + r) / 2;
+        return query(node->left, l, m, ql, qr) +
+               query(node->right, m + 1, r, ql, qr);
+    }
+
+    // Public query method
+    int queryVersion(int version, int ql, int qr) {
+        if (version >= versions.size()) {
+            cout << "Invalid version\n";
+            return -1;
+        }
+        return query(versions[version], 0, n - 1, ql, qr);
+    }
+};
+int main() {
+    vector<int> sales = {10, 20, 30, 40, 50}; // Initial sales data
+    PersistentSegmentTree pst(sales);
+
+    pst.createNewVersion(2, 100); // Version 1: update index 2 → 100
+    pst.createNewVersion(0, 200); // Version 2: update index 0 → 200
+
+    cout << "Sum in version 0 [0, 4]: " << pst.queryVersion(0, 0, 4) << endl; // 150
+    cout << "Sum in version 1 [0, 4]: " << pst.queryVersion(1, 0, 4) << endl; // 220
+    cout << "Sum in version 2 [0, 2]: " << pst.queryVersion(2, 0, 2) << endl; // 200 + 20 + 100 = 320
+
+    return 0;
+}
 </pre>
         </div>
       </div>
