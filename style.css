@@ -11,7 +11,11 @@
       background: #f9f9f9;
       color: #333;
     }
-
+#home {
+  text-align: center;
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+  padding: 5rem 2rem;
+}
     /* Navbar styles */
     nav {
       position: sticky;
