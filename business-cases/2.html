@@ -34,17 +34,7 @@
          <ul>
         <li><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</li>
         <li><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</li>
-        <li><strong>Traversal for Reports:</strong> In-order traversal for sorted inventory listing.</li>
-        <li><strong>Performance Focus:</strong> Ensures worst-case operations remain logarithmic (unlike standard BSTs).</li>
-        <li><strong>Time Complexity:</strong>
-          <ul>
-            <li>Insertion: O(log n)</li>
-            <li>Get Top k Leads: O(k logn)</li>
-            <li>Traversal:O(1)</li>
-            <li>Access: O(log n)</li>
-          </ul></li>
-        <li><strong>Space Complexity:</strong> O(n) for n leads.</li>
-      </ul>
+       </ul>
       </div>
 
       <div class="card" id ="code"> 
@@ -142,36 +132,47 @@ int main() {
       </div>
 
       <div class="card" id ="complexity">
-        <h3>⏱️ Time Complexity</h3>
-        <table>
-          <tr>
-            <th>Operation</th>
-            <th>Time</th>
-            <th>Space</th>
-          </tr>
-          <tr>
-            <td>Training (Random Forest)</td>
-            <td>O(n log n * m)</td>
-            <td>O(m)</td>
-          </tr>
-          <tr>
-            <td>Prediction</td>
-            <td>O(log n)</td>
-            <td>O(1)</td>
-          </tr>
-        </table>
+        <h3>⏱️ Time and Space Complexity</h3>
+        <table border="1">
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Insertion</td>
+      <td>O(log n)</td>
+      <td rowspan="4">O(n) for n leads</td>
+    </tr>
+    <tr>
+      <td>Get Top k Leads</td>
+      <td>O(k log n)</td>
+    </tr>
+    <tr>
+      <td>Traversal</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>Access</td>
+      <td>O(log n)</td>
+    </tr>
+  </tbody>
+</table>
+
       </div>
 
       <div class="card references" id="ref">
-        <h3>📚 References</h3>
+        <h3> References</h3>
         <ul>
-          <li><a href="https://www.salesforce.com/products/einstein/ai-lead-scoring/" target="_blank">Salesforce Einstein Lead Scoring</a></li>
-          <li><a href="https://www.ibm.com/blogs/watson-health/lead-scoring/" target="_blank">IBM - ML for Lead Scoring</a></li>
+          <li>https://www.salesforce.com/blog/lead-scoring/</li>
         </ul>
       </div>
 
       <div class="nav-footer">
-        <a href="#">Next: Smart Case Routing →</a>
+        <a href="#">Next: Sales Forcasting and Trend Analysis →</a>
       </div>
     </main>
   </div>
