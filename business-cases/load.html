@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | Lead Scoring Case</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111827;
+      color: #e5e7eb;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background-color: #1f2937;
+      padding: 30px 20px;
+    }
+
+    .sidebar h2 {
+      color: #38bdf8;
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul li a {
+      color: #d1d5db;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+      color: #38bdf8;
+    }
+
+    /* Main content */
+    .main {
+      padding: 40px;
+    }
+
+    .header {
+      font-size: 30px;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #9ca3af;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+    }
+
+    .card h3 {
+      color: #facc15;
+      margin-bottom: 15px;
+    }
+
+    .code-block {
+      background-color: #0f172a;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 14px;
+      color: #93c5fd;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table th, table td {
+      border: 1px solid #374151;
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #111827;
+      color: #38bdf8;
+    }
+
+    .references a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+
+    .references a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-footer {
+      text-align: right;
+      margin-top: 30px;
+    }
+
+    .nav-footer a {
+      color: #f472b6;
+      text-decoration: none;
+    }
+
+    .nav-footer a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#">Lead Scoring System</a></li>
+        <li><a href="#">Case Routing</a></li>
+        <li><a href="#">Workflow Automation</a></li>
+        <li><a href="#">Inventory Sync</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Automated Lead Scoring System</h1>
+      <p class="subtitle">Prioritize leads efficiently using AI-based dynamic scoring.</p>
+
+      <div class="card">
+        <h3>📊 Business Case</h3>
+        <p>Salesforce users often struggle with identifying which leads are most likely to convert. Automating lead scoring based on engagement, source, and firmographic data boosts sales productivity by over 25%.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔍 How It Works</h3>
+        <ul>
+          <li>Analyze features like email engagement, industry, revenue, etc.</li>
+          <li>Train ML models to predict conversion probabilities.</li>
+          <li>Score range: 0 (cold) to 100 (hot lead)</li>
+          <li>Integrate scores into Salesforce dashboards or workflows.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>💻 Sample Python Code (using Random Forest)</h3>
+        <div class="code-block">
+<pre>
+from sklearn.ensemble import RandomForestClassifier
+import pandas as pd
+
+df = pd.read_csv("salesforce_leads.csv")
+X = df[["industry_score", "email_clicks", "company_size"]]
+y = df["converted"]
+
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X, y)
+
+df["lead_score"] = model.predict_proba(X)[:, 1] * 100
+</pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>⏱️ Time Complexity</h3>
+        <table>
+          <tr>
+            <th>Operation</th>
+            <th>Time</th>
+            <th>Space</th>
+          </tr>
+          <tr>
+            <td>Training (Random Forest)</td>
+            <td>O(n log n * m)</td>
+            <td>O(m)</td>
+          </tr>
+          <tr>
+            <td>Prediction</td>
+            <td>O(log n)</td>
+            <td>O(1)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card references">
+        <h3>📚 References</h3>
+        <ul>
+          <li><a href="https://www.salesforce.com/products/einstein/ai-lead-scoring/" target="_blank">Salesforce Einstein Lead Scoring</a></li>
+          <li><a href="https://www.ibm.com/blogs/watson-health/lead-scoring/" target="_blank">IBM - ML for Lead Scoring</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#">Next: Smart Case Routing →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

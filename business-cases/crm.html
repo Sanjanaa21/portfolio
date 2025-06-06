@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salesforce CRM Data Synchronization Use Case</title>
+  <style>
+    /* Reset and base styles */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: #0f172a; /* Dark navy */
+      color: #e0e7ff; /* Light blue text */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+      align-items: flex-start;
+    }
+    article {
+      background-color: #1e293b; /* Slightly lighter dark */
+      padding: 30px;
+      border-radius: 12px;
+      max-width: 720px;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+    }
+    h3 {
+      color: #38bdf8; /* Bright blue */
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    h4 {
+      color: #fbbf24; /* Amber yellow */
+      margin-top: 30px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+    }
+    strong {
+      color: #a5b4fc; /* Soft lavender for emphasis */
+    }
+    ul {
+      padding-left: 20px;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    img {
+      display: block;
+      margin: 20px auto;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+    }
+    a {
+      color: #22c55e; /* Bright green */
+      font-weight: 600;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <article>
+    <h3>Customer Relationship Management (CRM) Data Synchronization</h3>
+    
+    <p>
+      Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. <strong>Hash Maps</strong> and <strong>Queues</strong> provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.
+    </p>
+    
+    <img src="Images/AVL_Tree_Example.gif" alt="AVL Tree Rotation" width="400" />
+    
+    <p><strong>Challenges:</strong> Handling duplicate or conflicting customer records across different platforms. Ensuring all updates reflect across systems instantly without data loss.</p>
+    
+    <p><strong>Market Benefits:</strong> Faster Access, Enhanced User Experience</p>
+    
+    <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+    <ul>
+      <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
+      <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
+      <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
+      <li><strong>Space Complexity:</strong> O(n)</li>
+    </ul>
+    
+    <p>
+      <a href="https://github.com/Sanjanaa21/portfolio/blob/main/Codes/AVL.cpp" target="_blank" rel="noopener noreferrer">
+        AVL Tree code on GitHub
+      </a>
+    </p>
+  </article>
+
+</body>
+</html>
