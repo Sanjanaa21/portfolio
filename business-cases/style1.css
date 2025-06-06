@@ -1,0 +1,125 @@
+ body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111827;
+      color: #e5e7eb;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background-color: #1f2937;
+      padding: 30px 20px;
+    }
+
+    .sidebar h2 {
+      color: #38bdf8;
+      margin-bottom: 30px;
+      font-size: 22px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar ul li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar ul li a {
+      color: #d1d5db;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .sidebar ul li a:hover {
+      color: #38bdf8;
+    }
+
+    /* Main content */
+    .main {
+      padding: 40px;
+    }
+
+    .header {
+      font-size: 30px;
+      color: #38bdf8;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #9ca3af;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: #1e293b;
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+    }
+
+    .card h3 {
+      color: #facc15;
+      margin-bottom: 15px;
+    }
+
+    .code-block {
+      background-color: #0f172a;
+      padding: 20px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 14px;
+      color: #93c5fd;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table th, table td {
+      border: 1px solid #374151;
+      padding: 12px;
+      text-align: left;
+    }
+
+    table th {
+      background-color: #111827;
+      color: #38bdf8;
+    }
+
+    .references a {
+      color: #4ade80;
+      text-decoration: none;
+    }
+
+    .references a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-footer {
+      text-align: right;
+      margin-top: 30px;
+    }
+
+    .nav-footer a {
+      color: #f472b6;
+      text-decoration: none;
+    }
+
+    .nav-footer a:hover {
+      text-decoration: underline;
+    }
