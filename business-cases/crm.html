@@ -34,8 +34,6 @@
          <ul>
          <li><strong>Data Structure used:</strong> AVL Tree - a self-balancing Binary Search Tree. Balancing Technique: Rotations (Left, Right, Left-Right, Right-Left) after insertions/deletions to keep tree height minimal.</li>
         <li><strong>Design Approach:</strong> Divide-and-conquer, recursive tree manipulation.</li>
-        <li><strong>Time Complexity:</strong> Search, Insertion, Deletion: O(log n); Traversal: O(n)</li>
-        <li><strong>Space Complexity:</strong> O(n).</li>
       </ul>
       </div>
 
@@ -183,30 +181,41 @@ int main() {
 
       <div class="card" id ="complexity">
         <h3>⏱️ Time Complexity</h3>
-        <table>
-          <tr>
-            <th>Operation</th>
-            <th>Time</th>
-            <th>Space</th>
-          </tr>
-          <tr>
-            <td>Training (Random Forest)</td>
-            <td>O(n log n * m)</td>
-            <td>O(m)</td>
-          </tr>
-          <tr>
-            <td>Prediction</td>
-            <td>O(log n)</td>
-            <td>O(1)</td>
-          </tr>
-        </table>
+        <table border="1">
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Search</td>
+      <td>O(log n)</td>
+      <td rowspan="4">O(n)</td>
+    </tr>
+    <tr>
+      <td>Insertion</td>
+      <td>O(log n)</td>
+    </tr>
+    <tr>
+      <td>Deletion</td>
+      <td>O(log n)</td>
+    </tr>
+    <tr>
+      <td>Traversal</td>
+      <td>O(n)</td>
+    </tr>
+  </tbody>
+</table>
       </div>
 
       <div class="card references" id="ref">
-        <h3>📚 References</h3>
+        <h3>References</h3>
         <ul>
-          <li><a href="https://www.salesforce.com/products/einstein/ai-lead-scoring/" target="_blank">Salesforce Einstein Lead Scoring</a></li>
-          <li><a href="https://www.ibm.com/blogs/watson-health/lead-scoring/" target="_blank">IBM - ML for Lead Scoring</a></li>
+          <li>https://en.m.wikipedia.org/wiki/File:AVL_Tree_Example.gif</li>
+          <li>Wikipedia contributors. (2023). *AVL tree*. Available at: https://en.wikipedia.org/wiki/AVL_tree .</li>
         </ul>
       </div>
 
