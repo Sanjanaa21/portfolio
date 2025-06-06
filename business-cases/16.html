@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <!-- <li><a href="#ref">References</a></li> -->
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Mergers & Acquisitions Integration</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+<p>Mergers and Acquisitions (M&A) involve integrating two or more companies into a unified operational, technological, and data structure. In software systems, this means merging organizational hierarchies, databases, access controls, and business processes efficiently without redundancy or conflict.
+ Objective: Efficiently identify, merge, and manage interconnected systems, ensuring data consistency and minimizing duplication or integration errors.</p>
+        </div>
+      <div class="card" id="performance">
+        <img src="Images/union.gif" alt="Union-find" width="400" />
+          
+      <p><strong>Challenges:</strong> Redundancy Detection, Conflict Resolution, Business and IT layers may be interlinked in non-trivial ways.</p>
+      <p><strong>Market Benefits:</strong> Faster Integration, 	Ensures structured integration paths and proper data ownership resolution, Tracks the complete connected structure of entities post-merger</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong>Union-Find (DSU)	Efficiently track and merge groups of systems</li>
+        
+      </ul>
+    </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <unordered_map>
+using namespace std;
+
+class UnionFind {
+private:
+    vector<int> parent;
+    vector<int> rank;
+
+public:
+    UnionFind(int n) {
+        parent.resize(n);
+        rank.resize(n, 0);
+        // Initially, each node is its own parent
+        for (int i = 0; i < n; ++i)
+            parent[i] = i;
+    }
+
+    int find(int x) {
+        if (x != parent[x])
+            parent[x] = find(parent[x]); // Path compression
+        return parent[x];
+    }
+
+    bool unite(int x, int y) {
+        int xr = find(x);
+        int yr = find(y);
+
+        if (xr == yr) return false; // Already in same set
+
+        // Union by rank
+        if (rank[xr] < rank[yr]) {
+            parent[xr] = yr;
+        } else if (rank[xr] > rank[yr]) {
+            parent[yr] = xr;
+        } else {
+            parent[yr] = xr;
+            rank[xr]++;
+        }
+        return true;
+    }
+
+    int countGroups() {
+        int count = 0;
+        for (int i = 0; i < parent.size(); i++)
+            if (parent[i] == i)
+                count++;
+        return count;
+    }
+};
+
+int main() {
+    // Example: 6 companies
+    vector<string> companies = {"A", "B", "C", "D", "E", "F"};
+    unordered_map<string, int> nameToId;
+    for (int i = 0; i < companies.size(); ++i)
+        nameToId[companies[i]] = i;
+
+    UnionFind uf(companies.size());
+
+    // Simulated M&A mergers: each pair represents a merge
+    vector<pair<string, string>> mergers = {
+        {"A", "B"},
+        {"C", "D"},
+        {"B", "C"},  // A-B-C-D now connected
+        {"E", "F"},
+        {"A", "D"},  // Already connected, ignored
+    };
+
+    cout << "Processing Mergers:\n";
+    for (auto &merge : mergers) {
+        string u = merge.first;
+        string v = merge.second;
+        bool merged = uf.unite(nameToId[u], nameToId[v]);
+        cout << u << " + " << v << " => " << (merged ? "Merged" : "Already Connected") << endl;
+    }
+
+    cout << "\nTotal independent systems after mergers: " << uf.countGroups() << endl;
+
+    return 0;
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+           <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Initialization (DSU of N nodes)</td>
+        <td><code>O(N)</code></td>
+        <td><code>O(N)</code></td>
+      </tr>
+      <tr>
+        <td><code>find(x)</code> with path compression</td>
+        <td><code>O(α(N))</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><code>union(x, y)</code> with union by rank</td>
+        <td><code>O(α(N))</code></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Total merges (M operations)</td>
+        <td><code>O(M × α(N))</code></td>
+        <td><code>O(N)</code></td>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+      <!-- <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li><a href="https://www.salesforce.com/products/einstein/ai-lead-scoring/" target="_blank">Salesforce Einstein Lead Scoring</a></li>
+          <li><a href="https://www.ibm.com/blogs/watson-health/lead-scoring/" target="_blank">IBM - ML for Lead Scoring</a></li>
+        </ul>
+      </div> -->
+
+      <!-- <div class="nav-footer">
+        <a href="#">Next: Smart Case Routing →</a>
+      </div> -->
+    </main>
+  </div>
+</body>
+</html>

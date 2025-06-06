@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Real-Time Case Management and Routing</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+      <p> Salesforce's Real-Time Case Management and Routing, each case is routed optimally through agents, departments, or decision trees. A* helps identify the shortest or most efficient path for resolution based on both: Actual cost (time, resource load, agent availability), Estimated cost to goal (heuristic: urgency, complexity, escalation level).</p>
+      </div>
+      <div class="card" id="performance">
+      <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+      <img src="Images/a_-search-algorithm-2.png" alt="A*" width="400" />
+      <p><strong>Challenges:</strong> Dynamic updates, Heuristic Design, State Explosion, Response Time, Continuous Routing.</p>
+      <p><strong>Market Benefits:</strong> Faster Case Resolution, Dynamic load balancing, better customer experience,cost optimization.</p>
+      <ul>
+        <li><strong>Data Structure used:</strong> A* algorithm: Heiuristic-vased search, Greedy approach.
+        Best-First Search: Heuristic-based search, Priority Queue.</li>
+      </ul>
+      </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+struct Product {
+    int id;
+    vector<pair<int, double>> neighbors; // pair<neighbor_id, cost>
+};
+
+double heuristic(int productA, int goalProduct) {
+    // A heuristic estimating "distance" or difference between productA and goalProduct
+    // e.g., difference in features, category similarity score, etc.
+    // For simplicity, return 0 (Dijkstra's behavior) or a predefined heuristic.
+    return 0.0;
+}
+
+vector<int> aStarRecommend(int startProduct, int goalProduct, const vector<Product>& products) {
+    priority_queue<pair<double,int>, vector<pair<double,int>>, greater<>> openSet;
+    unordered_map<int, int> cameFrom;
+    unordered_map<int, double> gScore;
+    unordered_map<int, double> fScore;
+
+    for (const auto& p : products) {
+        gScore[p.id] = INFINITY;
+        fScore[p.id] = INFINITY;
+    }
+    gScore[startProduct] = 0;
+    fScore[startProduct] = heuristic(startProduct, goalProduct);
+
+    openSet.push({fScore[startProduct], startProduct});
+
+    while (!openSet.empty()) {
+        int current = openSet.top().second;
+        if (current == goalProduct) {
+            // reconstruct path
+            vector<int> path;
+            while (cameFrom.find(current) != cameFrom.end()) {
+                path.push_back(current);
+                current = cameFrom[current];
+            }
+            path.push_back(startProduct);
+            reverse(path.begin(), path.end());
+            return path; // recommended product path
+        }
+        openSet.pop();
+
+        for (auto& neighbor : products[current].neighbors) {
+            int neighborID = neighbor.first;
+            double cost = neighbor.second;
+            double tentative_gScore = gScore[current] + cost;
+
+            if (tentative_gScore < gScore[neighborID]) {
+                cameFrom[neighborID] = current;
+                gScore[neighborID] = tentative_gScore;
+                fScore[neighborID] = tentative_gScore + heuristic(neighborID, goalProduct);
+                openSet.push({fScore[neighborID], neighborID});
+            }
+        }
+    }
+
+    return {}; // no path found
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time and Space Complexity</h3>
+        <table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Complexity Type</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Time Complexity</td>
+      <td>
+        <ul>
+          <li>In grid-based or graph-based routing: O(E + V log V) with priority queue and proper data structures.</li>
+          <li>Worst Case: O(b^d), where b is branching factor and d is depth of optimal solution.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Space Complexity</td>
+      <td>O(b^d) for storing all nodes in open and closed sets (may be optimized).</td>
+    </tr>
+  </tbody>
+</table>
+
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>GeeksforGeeks. “A* Search Algorithm.” </li>
+          </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#5.html">Next: Workflow Automation →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

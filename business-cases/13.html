@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Multi-Channel Marketing Campaign Orchestration</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+      <p>Multi-Channel Marketing Campaign Orchestration is about delivering personalized marketing content to the right customers through multiple communication channels (Email, SMS, Social Media, etc.) within defined constraints such as budget, time slots, and channel capacity. By modeling this as a flow network, we can apply the Ford-Fulkerson algorithm to maximize the number of successful message deliveries. This ensures optimal resource usage and maximized campaign reach.</p>
+      </div>
+      <div class="card" id="performance">
+        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+        <img src="Images/flow-network.webp" alt="Ford -fulkerson" width="400" />
+      <img src="Images/ford-fulkerson.png" alt="Ford -fulkerson" width="400" />
+      <p><strong>Challenges:</strong> Channel Constraints	, Customer Fatigue, Optimal Routing. </p>
+      <p><strong>Market Benefits:</strong> Ensures the highest number of message deliveries within constraints, Efficient Budget Use, Helps identify high-yield channels based on flow distribution.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Ford-fulkerson.</li>
+        <li><strong>Design Approach:</strong>
+        Adjacency Matrix (int graph[V][V]):	Stores capacities between nodes (channels/customers).
+        Residual Graph	:Tracks remaining capacities after each augmentation.
+        Parent Array (int parent[V]):	Stores augmenting path during BFS.
+        Queue (BFS):	For traversing the graph level-by-level to find paths.</li>    
+     </ul>
+    </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+
+#include <iostream>
+#include <limits.h>
+#include <queue>
+#include <vector>
+#include <string.h>
+using namespace std;
+
+#define V 7 // Total nodes: Source, 3 channels, 2 customers, Sink
+
+// Breadth-First Search to find augmenting path
+bool bfs(int rGraph[V][V], int s, int t, int parent[]) {
+    bool visited[V];
+    memset(visited, 0, sizeof(visited));
+
+    queue<int> q;
+    q.push(s);
+    visited[s] = true;
+    parent[s] = -1;
+
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+
+        for (int v = 0; v < V; v++) {
+            if (!visited[v] && rGraph[u][v] > 0) {
+                if (v == t) {
+                    parent[v] = u;
+                    return true;
+                }
+                q.push(v);
+                parent[v] = u;
+                visited[v] = true;
+            }
+        }
+    }
+
+    return false;
+}
+
+// Ford-Fulkerson algorithm
+int fordFulkerson(int graph[V][V], int s, int t) {
+    int u, v;
+
+    // Create residual graph
+    int rGraph[V][V];
+    for (u = 0; u < V; u++)
+        for (v = 0; v < V; v++)
+            rGraph[u][v] = graph[u][v];
+
+    int parent[V]; // To store path
+    int max_flow = 0; // Result
+
+    // Augment flow while path from source to sink exists
+    while (bfs(rGraph, s, t, parent)) {
+        // Find min capacity in path
+        int path_flow = INT_MAX;
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            path_flow = min(path_flow, rGraph[u][v]);
+        }
+
+        // Update residual capacities
+        for (v = t; v != s; v = parent[v]) {
+            u = parent[v];
+            rGraph[u][v] -= path_flow;
+            rGraph[v][u] += path_flow;
+        }
+
+        max_flow += path_flow;
+    }
+
+    return max_flow;
+}
+
+int main() {
+    // Graph as capacity matrix
+    int graph[V][V] = { {0, 10, 5, 15, 0, 0, 0},  // Source to channels
+                        {0, 0, 0, 0, 6, 4, 0},    // Email to customers
+                        {0, 0, 0, 0, 5, 0, 0},    // SMS to customer A
+                        {0, 0, 0, 0, 5, 10, 0},   // Social to customers
+                        {0, 0, 0, 0, 0, 0, 10},   // Customer A to sink
+                        {0, 0, 0, 0, 0, 0, 5},    // Customer B to sink
+                        {0, 0, 0, 0, 0, 0, 0} };  // Sink
+
+    int source = 0, sink = 6;
+
+    cout << "Maximum number of campaign messages delivered: "
+         << fordFulkerson(graph, source, sink) << endl;
+
+    return 0;
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+        <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Description</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BFS per iteration</td>
+        <td>Traverses all edges to find one augmenting path</td>
+        <td>O(E)</td>
+        <td>O(V)</td>
+      </tr>
+      <tr>
+        <td>Number of augmenting paths (max)</td>
+        <td>Proportional to total flow</td>
+        <td>O(F)</td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td><strong>Total Time Complexity</strong></td>
+        <td>Edmonds-Karp (BFS-based Ford-Fulkerson)</td>
+        <td><strong>O(V × E²)</strong></td>
+        <td>—</td>
+      </tr>
+      <tr>
+        <td>Residual Capacity Graph</td>
+        <td>Stores updated capacities between all node pairs</td>
+        <td>—</td>
+        <td>O(V²)</td>
+      </tr>
+      <tr>
+        <td>Parent Array</td>
+        <td>Stores path from source to sink during BFS</td>
+        <td>—</td>
+        <td>O(V)</td>
+      </tr>
+      <tr>
+        <td>Queue for BFS</td>
+        <td>Used for level-order traversal</td>
+        <td>—</td>
+        <td>O(V)</td>
+      </tr>
+      <tr>
+        <td><strong>Total Space Complexity</strong></td>
+        <td>Graph + parent array + queue</td>
+        <td>—</td>
+        <td><strong>O(V²)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://www.programiz.com/dsa/ford-fulkerson-algorithm</li>
+         </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#14.html">Next: Partner Relationship Management →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

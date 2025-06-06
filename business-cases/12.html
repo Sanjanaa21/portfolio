@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Salesforce Data Backup and Recovery Automation</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+      <p>Salesforce stores critical enterprise data such as leads, accounts, contacts, opportunities, and transactions. Data loss due to accidental deletion, corruption, or API integration errors can cause major disruptions. Hence, automated backup and recovery systems are crucial. This system periodically backs up Salesforce records and allows restoration of any record or specific version. It ensures business continuity, compliance, and reliable disaster recovery.</p>
+      </div>
+      <div class="card" id="performance">
+      <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+      <img src="Images/hash.png" alt="Hash-Map" width="400" />
+      <p><strong>Challenges:</strong> Keeping track of multiple versions of records with minimal overhead, Large volumes of data and metadata need to be backed up efficiently.</p>
+      <p><strong>Market Benefits:</strong> Quick recovery ensures uninterrupted operations during failures, Helps meet compliance requirements with secure, time-stamped backups.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Hash Map.</li> 
+      </ul>
+      </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+// Structure to represent a Salesforce record
+struct Record {
+    string id;
+    string object;
+    string name;
+    string type;
+    string last_modified;
+};
+
+// Hash map to store record ID -> list of versions
+unordered_map<string, vector<Record>> salesforce_backup;
+
+// Function to backup a record
+void backupRecord(const Record& r) {
+    salesforce_backup[r.id].push_back(r);
+    cout << "Record " << r.id << " backed up. Total versions: "
+         << salesforce_backup[r.id].size() << endl;
+}
+
+// Function to restore the latest version of a record
+void restoreLatest(const string& id) {
+    if (salesforce_backup.find(id) != salesforce_backup.end()) {
+        const Record& latest = salesforce_backup[id].back();
+        cout << "\nRestoring latest version of " << id << ":\n";
+        cout << "Object: " << latest.object << endl;
+        cout << "Name: " << latest.name << endl;
+        cout << "Type: " << latest.type << endl;
+        cout << "Last Modified: " << latest.last_modified << endl;
+    } else {
+        cout << "Record ID " << id << " not found." << endl;
+    }
+}
+
+// Function to view all versions of a record
+void viewVersions(const string& id) {
+    if (salesforce_backup.find(id) != salesforce_backup.end()) {
+        cout << "\nAll versions for " << id << ":\n";
+        int version = 1;
+        for (const Record& r : salesforce_backup[id]) {
+            cout << "Version " << version++ << ": "
+                 << r.name << " (Modified: " << r.last_modified << ")\n";
+        }
+    } else {
+        cout << "No versions found for " << id << "." << endl;
+    }
+}
+
+// Function to restore a specific version of a record
+void restoreVersion(const string& id, int version) {
+    if (salesforce_backup.find(id) != salesforce_backup.end()) {
+        auto& versions = salesforce_backup[id];
+        if (version >= 1 && version <= versions.size()) {
+            const Record& r = versions[version - 1];
+            cout << "\nRestoring version " << version << " of " << id << ":\n";
+            cout << "Object: " << r.object << endl;
+            cout << "Name: " << r.name << endl;
+            cout << "Type: " << r.type << endl;
+            cout << "Last Modified: " << r.last_modified << endl;
+        } else {
+            cout << "Invalid version number." << endl;
+        }
+    } else {
+        cout << "Record not found." << endl;
+    }
+}
+
+// Main function
+int main() {
+    // Sample records
+    Record r1 = {"ACC001", "Account", "Acme Corp", "Customer", "2025-06-01"};
+    Record r2 = {"ACC001", "Account", "Acme Corporation", "Customer", "2025-06-04"};
+    Record r3 = {"CON001", "Contact", "Jane Doe", "Individual", "2025-06-02"};
+
+    // Perform backup operations
+    backupRecord(r1);
+    backupRecord(r2);
+    backupRecord(r3);
+
+    // Restore and view operations
+    restoreLatest("ACC001");
+    viewVersions("ACC001");
+    restoreVersion("ACC001", 1);
+
+    return 0;
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+         <table>
+        <thead>
+            <tr>
+                <th>Operation</th>
+                <th>Time Complexity</th>
+                <th>Space Complexity</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Insert/Backup Record</td>
+                <td>O(1) average</td>
+                <td>O(n * v) — n records, v versions per record</td>
+            </tr>
+            <tr>
+                <td>Restore Latest Version</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+            </tr>
+            <tr>
+                <td>View All Versions</td>
+                <td>O(v)</td>
+                <td>O(v)</td>
+            </tr>
+            <tr>
+                <td>Restore Specific Version</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+            </tr>
+        </tbody>
+    </table>
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://www.salesforce.com/in/platform/data-backup-recovery/</li>
+         </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#13.html">Next: Multi-Channel Marketing Campaign Orchestration →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

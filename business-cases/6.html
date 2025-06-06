@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">E-commerce Order and Inventory Sync</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+      <p>A Treap (Cartesian Tree) can be used to maintain the inventory of products, allowing for efficient insertion, deletion, and search operations. This is particularly useful for managing large inventories with frequent updates and queries.</p>
+      </div>
+      <div class="card" id="performance">
+      <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+      <img src="Images/Treap.svg" alt="Treap" width="400" />
+       <p>A treap is a data structure which combines binary tree and binary heap (hence the name: tree + heap ⇒Treap). More specifically, treap is a data structure that stores pairs   (X,Y) in a binary tree in such a way that it is a binary search tree by X and a binary heap by Y. If some node of the tree contains values (X0,Y0), all nodes in the left subtree have X≤X0, all nodes in the right subtree have X0≤X, and all nodes in both left and right subtrees have Y≤Y0.</p>
+      <p><strong>Challenges:</strong>Maintaining both BST and heap properties simultaneously during insertions and deletions can be complex.</p>
+      <p><strong>Market Benefits:</strong>Useful in applications requiring fast dynamic set operations with randomized balancing, such as database indexing, memory allocators, and gaming leaderboards, Fast Inventory Management, Sorted data access.</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong>Node contains:
+            Key (BST property)
+            Priority (heap property, usually random)
+            Left and right child pointers
+            The treap satisfies:
+            Inorder traversal yields keys in sorted order (BST property)
+            Each node’s priority is higher than its children’s (max-heap property)</li>
+        <li><strong>Design Approach:</strong> Insertions and deletions are done like in a BST based on key.
+        After inserting, rotate nodes to restore heap property using tree rotations (similar to AVL/Red-Black tree rotations).</li>
+       </ul>
+      </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <vector>
+
+using namespace std;
+
+struct TreapNode {
+    int key;        // Product ID
+    int stock;      // Stock quantity
+    int priority;   // Random priority for heap property
+    TreapNode* left;
+    TreapNode* right;
+
+    TreapNode(int k, int s) : key(k), stock(s), priority(rand()), left(nullptr), right(nullptr) {}
+};
+
+class Treap {
+private:
+    TreapNode* root;
+
+    TreapNode* rotateRight(TreapNode* y) {
+        TreapNode* x = y->left;
+        TreapNode* T2 = x->right;
+        x->right = y;
+        y->left = T2;
+        return x;
+    }
+
+    TreapNode* rotateLeft(TreapNode* x) {
+        TreapNode* y = x->right;
+        TreapNode* T2 = y->left;
+        y->left = x;
+        x->right = T2;
+        return y;
+    }
+
+    TreapNode* insert(TreapNode* node, int key, int stock) {
+        if (!node)
+            return new TreapNode(key, stock);
+
+        if (key < node->key) {
+            node->left = insert(node->left, key, stock);
+            if (node->left->priority > node->priority)
+                node = rotateRight(node);
+        }
+        else if (key > node->key) {
+            node->right = insert(node->right, key, stock);
+            if (node->right->priority > node->priority)
+                node = rotateLeft(node);
+        }
+        else {
+            // Key exists, update stock
+            node->stock = stock;
+        }
+        return node;
+    }
+
+    TreapNode* search(TreapNode* node, int key) {
+        if (!node || node->key == key)
+            return node;
+
+        if (key < node->key)
+            return search(node->left, key);
+        else
+            return search(node->right, key);
+    }
+
+    void inorder(TreapNode* node, vector<pair<int,int>>& result) {
+        if (!node) return;
+        inorder(node->left, result);
+        result.push_back({node->key, node->stock});
+        inorder(node->right, result);
+    }
+
+    void freeTreap(TreapNode* node) {
+        if (!node) return;
+        freeTreap(node->left);
+        freeTreap(node->right);
+        delete node;
+    }
+
+public:
+    Treap() : root(nullptr) {
+        srand(time(nullptr));  // Seed for random priority
+    }
+
+    ~Treap() {
+        freeTreap(root);
+    }
+
+    void addOrUpdateProduct(int productID, int stock) {
+        root = insert(root, productID, stock);
+    }
+
+    int getStock(int productID) {
+        TreapNode* node = search(root, productID);
+        if (node)
+            return node->stock;
+        return -1;  // Product not found
+    }
+
+    vector<pair<int,int>> getAllProductsSorted() {
+        vector<pair<int,int>> result;
+        inorder(root, result);
+        return result;
+    }
+};
+
+int main() {
+    Treap inventory;
+
+    // Insert products
+    inventory.addOrUpdateProduct(101, 50);
+    inventory.addOrUpdateProduct(205, 30);
+    inventory.addOrUpdateProduct(150, 20);
+
+    // Update stock
+    inventory.addOrUpdateProduct(205, 40);
+
+    // Get stock for a product
+    cout << "Stock for product 205: " << inventory.getStock(205) << endl;
+
+    // Print all products sorted by product ID
+    cout << "All inventory products sorted:" << endl;
+    for (auto& p : inventory.getAllProductsSorted()) {
+        cout << "Product ID: " << p.first << ", Stock: " << p.second << endl;
+    }
+
+    return 0;
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time Complexity</h3>
+        <table border="1" cellpadding="5" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Average Case Time Complexity</th>
+      <th>Worst Case Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Search</td>
+      <td>O(log n)</td>
+      <td>O(n)</td>
+      <td rowspan="3">O(n)</td>
+    </tr>
+    <tr>
+      <td>Insertion</td>
+      <td>O(log n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Deletion</td>
+      <td>O(log n)</td>
+      <td>O(n)</td>
+    </tr>
+  </tbody>
+</table>
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://en.wikipedia.org/wiki/Treap</li>
+          <li>https://cp-algorithms.com/data_structures/treap.html</li>
+        </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#7.html">Next: Dynamic User access →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

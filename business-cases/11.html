@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Sales Territory Management and Optimization</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+      <p>Sales Territory Management involves strategically allocating customers to the most suitable sales representatives based on geography or other features such as purchase history or business potential. Efficient territory optimization can significantly improve field sales productivity, customer satisfaction, and revenue generationUsing KD-Trees (k-dimensional trees) for spatial data allows rapid nearest-neighbor queries, enabling real-time assignment of customers to sales reps. This structure is ideal for optimizing territories based on geographic proximity in 2D (latitude, longitude) or higher dimensions (e.g., sales volume, customer priority, time zones).</p>
+      </div>
+      <div class="card" id="performance">
+        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+        <p>A 3-dimensional k-d tree. The first split (the red vertical plane) cuts the root cell (white) into two subcells, each of which is then split (by the green horizontal planes) into two subcells. Finally, four cells are split (by the four blue vertical planes) into two subcells. Since there is no more splitting, the final eight are called leaf cells.</p>
+        <img src="Images/KDtree.png" alt="KD-tree" width="400" />
+        <img src="Images/3dtree.png" alt="3D-tree" width="400" />
+        <p><strong>Challenges:</strong> High dimensionality, real-time allocation, territory overlap.</p>
+        <p><strong>Market Benefits:</strong> Optimized routing, Increases sales productivity, faster CRM decisions.</p>
+        <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+        <li><strong>Data Structure used:</strong> KD-TREE: Efficient nearest neighbor search in 2D or multi-dimensional space.</li>
+      </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+import math
+
+class KDNode:
+    def __init__(self, point, sales_rep_id, left=None, right=None):
+        self.point = point  # Tuple: (x, y)
+        self.sales_rep_id = sales_rep_id
+        self.left = left
+        self.right = right
+
+class KDTree:
+    def __init__(self, points):
+        self.root = self.build(points)
+
+    def build(self, points, depth=0):
+        if not points:
+            return None
+
+        k = len(points[0][0])  # Dimensions
+        axis = depth % k
+        points.sort(key=lambda x: x[0][axis])
+        median = len(points) // 2
+
+        return KDNode(
+            point=points[median][0],
+            sales_rep_id=points[median][1],
+            left=self.build(points[:median], depth + 1),
+            right=self.build(points[median + 1:], depth + 1)
+        )
+
+    def nearest_neighbor(self, root, target, depth=0, best=None):
+        if root is None:
+            return best
+
+        k = len(target)
+        axis = depth % k
+        next_branch = None
+        opposite_branch = None
+
+        point_dist = self.distance(target, root.point)
+        if best is None or point_dist < best[1]:
+            best = (root.sales_rep_id, point_dist)
+
+        if target[axis] < root.point[axis]:
+            next_branch = root.left
+            opposite_branch = root.right
+        else:
+            next_branch = root.right
+            opposite_branch = root.left
+
+        best = self.nearest_neighbor(next_branch, target, depth + 1, best)
+
+        if abs(target[axis] - root.point[axis]) < best[1]:
+            best = self.nearest_neighbor(opposite_branch, target, depth + 1, best)
+
+        return best
+
+    def distance(self, point1, point2):
+        return math.sqrt(sum((a - b) ** 2 for a, b in zip(point1, point2)))
+
+# Example Sales Rep Locations: [(x, y), id]
+sales_reps = [
+    ((2, 3), "Rep-A"),
+    ((5, 4), "Rep-B"),
+    ((9, 6), "Rep-C"),
+    ((4, 7), "Rep-D"),
+    ((8, 1), "Rep-E"),
+    ((7, 2), "Rep-F")
+]
+
+# Build the KD-Tree
+tree = KDTree(sales_reps)
+
+# Query: New Customer Location
+new_customer = (6, 3)
+
+# Find Nearest Sales Rep
+nearest_rep = tree.nearest_neighbor(tree.root, new_customer)
+print(f"Nearest sales rep to customer at {new_customer}: {nearest_rep[0]} (Distance: {nearest_rep[1]:.2f})")
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+          <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Average Time Complexity</th>
+        <th>Worst-Case Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Build KD-Tree</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Nearest Neighbor Search</td>
+        <td>O(log n) (balanced tree)</td>
+        <td>O(n) (skewed or unbalanced tree)</td>
+        <td>O(log n) recursion stack</td>
+      </tr>
+      <tr>
+        <td>Insert/Delete Node</td>
+        <td>O(log n) (no balancing)</td>
+        <td>O(n) (worst case, no balancing)</td>
+        <td>O(1) per operation</td>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://en.wikipedia.org/wiki/K-d_tree</li>
+          <li>https://opendsa-server.cs.vt.edu/ODSA/Books/CS3/html/KDtree.html</li>
+        </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#12.html">Next: Salesforce Data BAckup and Recovery Automation →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

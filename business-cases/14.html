@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Partner Relationship Management (PRM)</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+        <p>Partner Relationship Management (PRM) is a system or framework used by businesses to manage their relationships with distributors, resellers, affiliates, and other types of partners. It facilitates coordination, communication, onboarding, performance tracking, and sales support across a network of partner entities. Graph traversal algorithms like BFS (Breadth-First Search) and DFS (Depth-First Search) can effectively model hierarchical relationships, map influence chains, or propagate updates or scores across partners. </p>
+      </div>
+      <div class="card" id="performance">
+        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+        Deptf-first-Search
+        <img src="Images/dfs.gif" alt="Depth First Search" width="400" />
+        Breadth-First-Search
+        <img src="Images/bfs.gif" alt="Breadth First Search" width="400" />
+      <p><strong>Challenges:</strong>Complex partner hierarchies, Cycle and duplication detection, Dynamic partner updates.</p>
+      <p><strong>Market Benefits:</strong> Improved partner visibility, Targeted communication, Data-driven decisions</p>
+      <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+      <ul>
+        <li><strong>Data Structure used:</strong> Graph: Represents partner relationships.</li>
+        <li><strong>Design Approach:</strong> Graph-Based Modeling – Partners as nodes; relationships as directed edges.</li>
+     </ul>
+    </div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+            <p>DFS code</p>
+<pre>
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <set>
+
+using namespace std;
+
+class PartnerGraph {
+private:
+    unordered_map<string, vector<string>> adj;
+
+public:
+    void addRelationship(const string& partner, const string& subPartner) {
+        adj[partner].push_back(subPartner);
+    }
+
+    void dfsUtil(const string& partner, set<string>& visited) {
+        visited.insert(partner);
+        cout << "Visiting (DFS): " << partner << endl;
+
+        for (const string& neighbor : adj[partner]) {
+            if (visited.find(neighbor) == visited.end()) {
+                dfsUtil(neighbor, visited);
+            }
+        }
+    }
+
+    void dfs(const string& start) {
+        set<string> visited;
+        cout << "Starting DFS from " << start << ":\n";
+        dfsUtil(start, visited);
+    }
+};
+
+int main() {
+    PartnerGraph prm;
+
+    prm.addRelationship("PartnerA", "PartnerB");
+    prm.addRelationship("PartnerA", "PartnerC");
+    prm.addRelationship("PartnerB", "PartnerD");
+    prm.addRelationship("PartnerB", "PartnerE");
+    prm.addRelationship("PartnerE", "PartnerG");
+    prm.addRelationship("PartnerC", "PartnerF");
+
+    prm.dfs("PartnerA");
+
+    return 0;
+}    
+
+</pre>
+<p>BFS Code</p>
+<pre>
+    #include <iostream>
+#include <unordered_map>
+#include <vector>
+#include <queue>
+#include <set>
+
+using namespace std;
+
+class PartnerGraph {
+private:
+    unordered_map<string, vector<string>> adj;
+
+public:
+    void addRelationship(const string& partner, const string& subPartner) {
+        adj[partner].push_back(subPartner);
+    }
+
+    void bfs(const string& start) {
+        set<string> visited;
+        queue<string> q;
+
+        q.push(start);
+        visited.insert(start);
+
+        cout << "Starting BFS from " << start << ":\n";
+
+        while (!q.empty()) {
+            string current = q.front();
+            q.pop();
+            cout << "Visiting (BFS): " << current << endl;
+
+            for (const string& neighbor : adj[current]) {
+                if (visited.find(neighbor) == visited.end()) {
+                    visited.insert(neighbor);
+                    q.push(neighbor);
+                }
+            }
+        }
+    }
+};
+
+int main() {
+    PartnerGraph prm;
+
+    prm.addRelationship("PartnerA", "PartnerB");
+    prm.addRelationship("PartnerA", "PartnerC");
+    prm.addRelationship("PartnerB", "PartnerD");
+    prm.addRelationship("PartnerB", "PartnerE");
+    prm.addRelationship("PartnerE", "PartnerG");
+    prm.addRelationship("PartnerC", "PartnerF");
+
+    prm.bfs("PartnerA");
+
+    return 0;
+}
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+       <table>
+    <thead>
+      <tr>
+        <th>Operation</th>
+        <th>Time Complexity</th>
+        <th>Space Complexity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Build Graph</td>
+        <td>O(e)</td>
+        <td>O(n + e)</td>
+      </tr>
+      <tr>
+        <td>DFS Traversal</td>
+        <td>O(n + e)</td>
+        <td>O(n) + stack (O(n))</td>
+      </tr>
+      <tr>
+        <td>BFS Traversal</td>
+        <td>O(n + e)</td>
+        <td>O(n) + queue (O(n))</td>
+      </tr>
+      <tr>
+        <td>Partner Insertion</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+      </tr>
+      <tr>
+        <td>Partner Relationship Check</td>
+        <td>O(1) (using hash map)</td>
+        <td>O(n)</td>
+      </tr>
+    </tbody>
+  </table>
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://en.wikipedia.org/wiki/Breadth-first_search</li>
+          <li>https://en.wikipedia.org/wiki/Depth-first_search</li>   
+        </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="#15.html">Next: Field Service Management →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
