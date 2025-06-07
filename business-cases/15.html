@@ -16,7 +16,9 @@
         <li><a href="#performance">Performance </a></li>
         <li><a href="#code">Code</a></li>
         <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#inf">Inference</a></li>
         <li><a href="#ref">References</a></li>
+        <li><a href="../index.html"><- Back to Home</a></li>
       </ul>
     </aside>
 
@@ -196,38 +198,50 @@ int main() {
 
       <div class="card" id ="complexity">
         <h3>⏱️ Time And Space Complexity</h3>
-          <table>
-    <thead>
-      <tr>
-        <th>Operation</th>
-        <th>Average Time Complexity</th>
-        <th>Worst-Case Time Complexity</th>
-        <th>Space Complexity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Build KD-Tree</td>
-        <td>O(n log n)</td>
-        <td>O(n log n)</td>
-        <td>O(n)</td>
-      </tr>
-      <tr>
-        <td>Nearest Neighbor Search</td>
-        <td>O(log n) (balanced tree)</td>
-        <td>O(n) (skewed or unbalanced tree)</td>
-        <td>O(log n) recursion stack</td>
-      </tr>
-      <tr>
-        <td>Insert/Delete Node</td>
-        <td>O(log n) (no balancing)</td>
-        <td>O(n) (worst case, no balancing)</td>
-        <td>O(1) per operation</td>
-      </tr>
-    </tbody>
-  </table>
+        
+       <table>
+        <caption>Time and Space Complexity of ACO</caption>
+        <tr>
+            <th>Aspect</th>
+            <th>Component</th>
+            <th>Complexity</th>
+        </tr>
+        <tr>
+            <td rowspan="4">Time</td>
+            <td>Initialization</td>
+            <td>O(n²)</td>
+        </tr>
+        <tr>
+            <td>Tour Construction</td>
+            <td>O(k × m × n²)</td>
+        </tr>
+        <tr>
+            <td>Pheromone Evaporation</td>
+            <td>O(k × n²)</td>
+        </tr>
+        <tr>
+            <td>Pheromone Update</td>
+            <td>O(k × m × n)</td>
+        </tr>
+        <tr>
+            <td rowspan="3">Space</td>
+            <td>Distance Matrix</td>
+            <td>O(n²)</td>
+        </tr>
+        <tr>
+            <td>Pheromone Matrix</td>
+            <td>O(n²)</td>
+        </tr>
+        <tr>
+            <td>Tours and Temp Data</td>
+            <td>O(m × n)</td>
+        </tr>
+    </table>
       </div>
-
+      <div class="card references" id="inf">
+        <h3>Inference</h3>
+        <p>Ant Colony Optimization (ACO) solves TSP by finding near-optimal paths. It is effective in scheduling field technicians to visit multiple service locations efficiently.</p>
+      </div>
       <div class="card references" id="ref">
         <h3>📚 References</h3>
         <ul>
