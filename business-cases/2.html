@@ -16,7 +16,9 @@
         <li><a href="#performance">Performance </a></li>
         <li><a href="#code">Code</a></li>
         <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#inf">Inference</a></li>
         <li><a href="#ref">References</a></li>
+        <li><a href="../index.html"><- Back to Home</a></li>
       </ul>
     </aside>
 
@@ -26,15 +28,15 @@
 
       <div class="card" id="intro">
         <h3>Business Case</h3>
-      <p>Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p>
+      <p>Salesforce uses automated lead scoring to prioritize high-potential customers efficiently. Heaps allow quick retrieval of top-scoring leads, enabling real-time sales decisions. This ensures that sales teams focus on leads most likely to convert, boosting productivity.</p> 
       </div>
       <div class="card" id="performance">
       <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
         <img src="../Images/heap.png" alt= "heap" width="400" /> 
-         <ul>
-        <li><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</li>
-        <li><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</li>
-       </ul>
+         <p><strong>Challenges:</strong>Dealing with inconsistent scoring across departments. Rebalancing when leads are updated or removed.</p>
+      <p><strong>Market Benefits:</strong>Prioritized sales targeting with near real-time adjustments. Improved conversion rates by focusing on high-potential leads.</p>
+        <p><strong>Data Structure used:</strong> Max-Heap (priority_queue in C++) maintains the highest scoring leads at the top.</p>
+        <p><strong>Design Approach:</strong> Uses greedy selection to prioritize highest scores; insertion maintains heap invariant in O(log n) time.</p>
       </div>
 
       <div class="card" id ="code"> 
@@ -163,7 +165,10 @@ int main() {
 </table>
 
       </div>
-
+      <div class="card references" id="inf">
+        <h3>Inference</h3>
+        <p>Heaps allow quick access to the highest or lowest lead scores, enabling efficient prioritization of leads. This supports real-time ranking and scoring, essential for sales reps to focus on high-potential leads first.</p>
+      </div>
       <div class="card references" id="ref">
         <h3> References</h3>
         <ul>
