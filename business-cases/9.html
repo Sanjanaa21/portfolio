@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+        <li><a href="../index.html"><- Back to Home</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header">Multi-Channel Customer Interaction Tracking </h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+        <p>Multi-channel customer interaction tracking systems log and manage customer communication from various sources such as chat, email, phone, and social media. These systems must not only store each interaction, but also track activity patterns over time for real-time decisions and service optimization.</p>
+      </div>
+      <div class="card" id="performance">
+        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+<p>To manage cumulative interaction volume tracking per time unit (minute/hour/day) across channels efficiently, we can integrate a Fenwick Tree (Binary Indexed Tree). It allows fast updates and prefix/range queries in O(log n) time.</p>        
+<img src="../Images/fenwick.png" alt="Fenwick-tree" width="400" />
+        <p><strong>Challenges:</strong> Real-time tracking of interactions per time interval, Maintaining performance with growing data.</p>
+        <p><strong>Market Benefits:</strong> Instant analytics enable better agent allocation, Allocate staff based on real-time load across channels.</p>
+        <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+        <li><strong>Data Structure used:</strong> Fenwick Tree (Binary Indexed Tree)	Maintains rolling count of interactions per time unit, per channel</li>
+            <li><strong>Design Techniques: </strong> Time-bucketed interaction logging, Channel-index  mapping.</li>
+</div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class FenwickTree {
+private:
+    vector<int> tree;
+    int size;
+public:
+    FenwickTree(int n) {
+        size = n + 1;
+        tree.resize(size, 0);
+    }
+
+    void update(int index, int delta) {
+        while (index < size) {
+            tree[index] += delta;
+            index += index & -index;
+        }
+    }
+
+    int query(int index) {
+        int sum = 0;
+        while (index > 0) {
+            sum += tree[index];
+            index -= index & -index;
+        }
+        return sum;
+    }
+
+    int rangeQuery(int left, int right) {
+        return query(right) - query(left - 1);
+    }
+};
+
+int main() {
+    int minutes = 60; // assuming 1 hour tracking (1 slot per minute)
+    FenwickTree chatInteractions(minutes);
+
+    // Example: Update interactions at minute 5, 10, 20
+    chatInteractions.update(5, 1);  // 1 interaction at minute 5
+    chatInteractions.update(10, 2); // 2 interactions at minute 10
+    chatInteractions.update(20, 3); // 3 interactions at minute 20
+
+    cout << "Interactions from minute 1 to 20: "
+         << chatInteractions.rangeQuery(1, 20) << endl; // Output: 6
+
+    cout << "Interactions from minute 6 to 15: "
+         << chatInteractions.rangeQuery(6, 15) << endl; // Output: 2
+
+    return 0;
+}
+
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+      <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 60%; text-align: center; font-family: Arial, sans-serif;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>Operation</th>
+      <th>Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>update(index, delta)</td>
+      <td>O(log n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>query(index)</td>
+      <td>O(log n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>rangeQuery(l, r)</td>
+      <td>O(log n)</td>
+      <td>O(n)</td>
+    </tr>
+    <tr>
+      <td>Construction</td>
+      <td>O(n)</td>
+      <td>O(n)</td>
+    </tr>
+  </tbody>
+</table>
+
+      </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://cp-algorithms.com/data_structures/fenwick.html</li>
+          </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="10.html">Next: Customizable Dashboard →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

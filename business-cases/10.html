@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salesforce | CRM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <h2><i class="fas fa-cloud"></i> Salesforce Use Cases</h2>
+      <ul>
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#performance">Performance </a></li>
+        <li><a href="#code">Code</a></li>
+        <li><a href="#complexity">Time and Space Complexity</a></li>
+        <li><a href="#ref">References</a></li>
+        <li><a href="../index.html"><- Back to Home</a></li>
+      </ul>
+    </aside>
+
+    <main class="main">
+      <h1 class="header"> Customizable Dashboard with Real-Time Analytics</h1>
+<!--       <p class="subtitle">Utilizes efficient data structures to synchronize customer interactions and transactional records across systems in near real-time. Hash Maps and Queues provide fast access and order-preserving mechanisms to manage high-throughput CRM operations.</p> -->
+
+      <div class="card" id="intro">
+        <h3>Business Case</h3>
+        <p>Multi-channel customer interaction tracking systems log and manage customer communication from various sources such as chat, email, phone, and social media. These systems must not only store each interaction, but also track activity patterns over time for real-time decisions and service optimization.</p>
+      </div>
+      <div class="card" id="performance">
+        <h3>Algorithm, Design Techniques, Performance Analysis:</h3>
+<p>A Segment Tree is a powerful data structure designed to efficiently perform range queries and updates on an array or sequence of data. Unlike simpler structures, it supports complex queries such as sums, minimums, maximums, and more over any sub-interval in O(log n) time, while also allowing point updates with the same time complexity. This makes it ideal for real-time analytics dashboards where interaction counts or other metrics need fast aggregation and updating across varying time windows or categories.</p>        
+<img src="../Images/Segment_tree.png" alt="Segment-tree" width="400" />
+        <p><strong>Challenges:</strong> Segment Trees are more complex to implement and maintain compared to simpler data structures like Fenwick Trees or Hash Maps.</p>
+        <p><strong>Market Benefits:</strong> Enables instant aggregation of customer interaction metrics over arbitrary time ranges, helping businesses respond quickly to changes in customer behavior
+       Businesses can dynamically monitor key performance indicators and adapt resource allocation, marketing efforts, or customer support based on live data.</p>
+        <h4>Algorithm, Design Techniques, Performance Analysis:</h4>
+        <li><strong>Data Structure used:</strong> Segment Tree: A binary tree where each node represents a segment (interval) of the input array and stores a value summarizing that segment (e.g., sum, min, max).
+        Allows point updates and range queries efficiently.</li>
+            <li><strong>Design Techniques: </strong> Divide and Conquer: Recursively split the data into segments and build a tree that aggregates these segments.
+            Lazy Propagation (optional): For batch updates on ranges without updating every element immediately, improving performance.
+            Modular Query Functions: Define generic functions for different operations (sum, min, max) for reusability.
+            Integration with Real-Time Stream: Connect Segment Tree updates to incoming event streams to maintain up-to-date metrics.</li>
+</div>
+
+      <div class="card" id ="code"> 
+        <h3>Code</h3>
+        <div class="code-block">
+<pre>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class SegmentTree {
+private:
+    vector<int> tree;
+    int n;
+
+    void build(const vector<int> &arr, int node, int start, int end) {
+        if (start == end) {
+            tree[node] = arr[start];
+        } else {
+            int mid = (start + end) / 2;
+            build(arr, 2*node, start, mid);
+            build(arr, 2*node+1, mid+1, end);
+            tree[node] = tree[2*node] + tree[2*node+1]; // sum query
+        }
+    }
+
+    void update(int node, int start, int end, int idx, int val) {
+        if (start == end) {
+            tree[node] += val; // increment by val
+        } else {
+            int mid = (start + end) / 2;
+            if (idx <= mid)
+                update(2*node, start, mid, idx, val);
+            else
+                update(2*node+1, mid+1, end, idx, val);
+            tree[node] = tree[2*node] + tree[2*node+1];
+        }
+    }
+
+    int query(int node, int start, int end, int l, int r) {
+        if (r < start || l > end)
+            return 0; // outside query range
+        if (l <= start && end <= r)
+            return tree[node]; // fully inside query range
+        int mid = (start + end) / 2;
+        int p1 = query(2*node, start, mid, l, r);
+        int p2 = query(2*node+1, mid+1, end, l, r);
+        return p1 + p2;
+    }
+
+public:
+    SegmentTree(const vector<int> &arr) {
+        n = arr.size();
+        tree.resize(4*n, 0);
+        build(arr, 1, 0, n-1);
+    }
+
+    void update(int idx, int val) {
+        update(1, 0, n-1, idx, val);
+    }
+
+    int rangeQuery(int l, int r) {
+        return query(1, 0, n-1, l, r);
+    }
+};
+
+int main() {
+    // Initial interaction counts per minute (60 minutes)
+    vector<int> interactions(60, 0);
+    SegmentTree segTree(interactions);
+
+    // Simulate updates: minute 5 +1 interaction, minute 10 +2, minute 20 +3
+    segTree.update(5, 1);
+    segTree.update(10, 2);
+    segTree.update(20, 3);
+
+    cout << "Interactions from minute 0 to 20: " << segTree.rangeQuery(0, 20) << endl; // Output: 6
+    cout << "Interactions from minute 6 to 15: " << segTree.rangeQuery(6, 15) << endl; // Output: 2
+
+    return 0;
+}
+
+</pre>
+        </div>
+      </div>
+
+      <div class="card" id ="complexity">
+        <h3>⏱️ Time And Space Complexity</h3>
+   <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 60%; text-align: center; font-family: Arial, sans-serif;">
+  <thead>
+    <tr style="background-color: #f2f2f2;">
+      <th>Operation</th>
+      <th>Time Complexity</th>
+      <th>Space Complexity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Build tree</td>
+      <td>O(n)</td>
+      <td>O(4n)</td>
+    </tr>
+    <tr>
+      <td>Point update</td>
+      <td>O(log n)</td>
+      <td>O(1) (in-place)</td>
+    </tr>
+    <tr>
+      <td>Range query</td>
+      <td>O(log n)</td>
+      <td>O(1)</td>
+    </tr>
+    <tr>
+      <td>Overall space</td>
+      <td>N/A</td>
+      <td>O(4n) due to tree</td>
+    </tr>
+  </tbody>
+</table>
+    </div>
+
+      <div class="card references" id="ref">
+        <h3>📚 References</h3>
+        <ul>
+          <li>https://en.wikipedia.org/wiki/Segment_tree</li>
+          <li>https://cp-algorithms.com/data_structures/segment_tree.html</li>
+          </ul>
+      </div>
+
+      <div class="nav-footer">
+        <a href="11.html">Next: Sales Territory Management →</a>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
