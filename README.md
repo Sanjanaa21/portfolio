@@ -77,27 +77,11 @@ Below are 16 business case studies implemented within the Salesforce domain. Eac
 - **Soft Skills:** Communication, Teamwork, Problem Solving
 - **Tools:** GitHub, VS Code, Python
 
-### 📫 Contact
-Links and contact information:
-- **Email:** sanjanabhat622@gmail.com
-- **GitHub:** [github.com/Sanjanaa21](https://github.com/Sanjanaa21)
-- **LinkedIn:** [linkedin.com/in/sanjana-bhat-57992626a](https://www.linkedin.com/in/sanjana-bhat-57992626a)
-
 ---
 
 ## 🛠️ Tech Stack
 
 - **Frontend:** HTML5, CSS3
 - **Fonts:** [Google Fonts – Montserrat](https://fonts.google.com/specimen/Montserrat)
-- **Deployment-Ready:** Simple static site deployable on GitHub Pages, Netlify, or Vercel.
 
----
 
-## 🖥️ Setup & Usage
-
-### 🔧 Run Locally
-
-1. Clone the repo:
-
-```bash
-git clone https://github.com/Sanjanaa21/portfolio.git
