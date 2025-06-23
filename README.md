@@ -47,7 +47,28 @@ Each business case shows:
 - Underlying algorithm or data structure (e.g., A*, Segment Trees, KD-Trees, Ford-Fulkerson, ACO)
 - How technology is applied to solve enterprise-level issues.
 
-> Clickable cards redirect to deeper case studies (`business-cases/1.html`, etc.)
+
+Below are 16 business case studies implemented within the Salesforce domain. Each case showcases a real-world problem and how it is solved using data structures, algorithms, or architectural principles.
+
+| # | Title | Description | Link |
+|--:|:------|:------------|:-----|
+| 1 | **CRM Data Synchronization** | Real-time sync of customer interactions using efficient structures. | [View](business-cases/1.html) |
+| 2 | **Automated Lead Scoring** | Uses heaps to dynamically prioritize leads. | [View](business-cases/2.html) |
+| 3 | **Sales Forecasting & Trend Analysis** | Persistent Segment Trees enable time-series analysis. | [View](business-cases/3.html) |
+| 4 | **Real-Time Case Management** | A* search for optimal case routing. | [View](business-cases/4.html) |
+| 5 | **Workflow Automation with Dependencies** | Topological sort handles task dependencies. | [View](business-cases/5.html) |
+| 6 | **E-commerce Order & Inventory Sync** | Treaps for real-time inventory tracking. | [View](business-cases/6.html) |
+| 7 | **Dynamic Access & Permission Management** | Uses lookup tables for role-permission mapping. | [View](business-cases/7.html) |
+| 8 | **Email Campaign Bounce Handling** | Queues and bloom filters avoid resending to bounced addresses. | [View](business-cases/8.html) |
+| 9 | **Customer Interaction Tracking** | Fenwick Trees track multi-channel engagement. | [View](business-cases/9.html) |
+| 10 | **Custom Dashboards with Real-Time Analytics** | Segment Trees support fast range queries. | [View](business-cases/10.html) |
+| 11 | **Sales Territory Optimization** | KD-Trees enable spatial assignment of customers. | [View](business-cases/11.html) |
+| 12 | **Data Backup & Recovery Automation** | Automates versioned record backup and restore. | [View](business-cases/12.html) |
+| 13 | **Marketing Campaign Orchestration** | Ford-Fulkerson algorithm optimizes delivery flow. | [View](business-cases/13.html) |
+| 14 | **Partner Relationship Management** | BFS/DFS manage hierarchical updates and scores. | [View](business-cases/14.html) |
+| 15 | **Field Service Management** | Ant Colony Optimization solves routing. | [View](business-cases/15.html) |
+| 16 | **Mergers & Acquisitions Integration** | Graph merging ensures system consistency. | [View](business-cases/16.html) |
+
 
 ### 🛠 Tools & Skills
 - **Languages:** C, C++, Java, Python, SQL
